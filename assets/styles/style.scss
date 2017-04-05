@@ -1,0 +1,243 @@
+@import 'colors';
+body {
+  background-color: $background-color;
+  color: $font-color;
+  // https://codepen.io/M_J_Robbins/pen/NPRGjP
+  // background:url(http://www.mariomayhem.com/fun/smb_level_editor/images/overworld_bg.png);
+  //  background-repeat: repeat-x;
+  //  background-position: bottom;
+  //  background-color:#5E91FE;
+  //  height:80%;
+  //  position:relative;
+  //  animation:background 5s;
+  //  -webkit-animation:background 5s;
+  //  animation-iteration-count: infinite;
+  //  -webkit-animation-iteration-count: infinite;
+  //  animation-timing-function: linear;
+  //  -webkit-animation-timing-function: linear;
+  //  animation-play-state: paused;
+  //  -webkit-animation-play-state: paused;
+}
+
+p {
+  color: $font-color;
+}
+
+.col-xs-4 {
+  border: blue solid;
+  height: 100px;
+  width: 100px;
+}
+
+// html, body{
+//   height:100%;
+//   margin:0;
+// }
+
+
+// button:focus{
+//   background:#ccc;
+// }
+//
+// button:focus ~ embed{
+//   display:block;
+// }
+// button:nth-child(1){
+//   top:35px;
+//   left:calc(50% - 30px);
+//   transform: translateX(-50%);
+// }
+// button:nth-child(2){
+//   top:35px;
+//   left:50%;
+//   transform: translateX(-50%);
+// }
+// button:nth-child(3){
+//   top:35px;
+//   left:calc(50% + 30px);
+//   transform: translateX(-50%);
+// }
+// button:nth-child(4){
+//   top:5px;
+//   left:calc(50% - 15px);
+//   transform: translateX(-50%);
+// }
+// button:nth-child(5){
+//   top:5px;
+//   left:calc(50% + 15px);
+//   transform: translateX(-50%);
+// }
+
+
+
+// .background {
+//  background:url(http://www.mariomayhem.com/fun/smb_level_editor/images/overworld_bg.png);
+//   background-repeat: repeat-x;
+//   background-position: bottom;
+//   background-color:#5E91FE;
+//   height:80%;
+//   position:relative;
+//   animation:background 5s;
+//   -webkit-animation:background 5s;
+//   animation-iteration-count: infinite;
+//   -webkit-animation-iteration-count: infinite;
+//   animation-timing-function: linear;
+//   -webkit-animation-timing-function: linear;
+//   animation-play-state: paused;
+//   -webkit-animation-play-state: paused;
+// }
+// .background:before, .background:after{
+//   width:100%;
+//   content:'';
+//   display:block;
+//   position:absolute;
+//   animation-iteration-count: infinite;
+//   -webkit-animation-iteration-count: infinite;
+//   animation-timing-function: linear;
+//   -webkit-animation-timing-function: linear;
+//   animation-play-state: paused;
+//   -webkit-animation-play-state: paused;
+// }
+// .background:after{
+//   background-image:url(http://s10.postimg.org/r5fs4o1nd/cloud_lg.png);
+//   height:196px;
+//   bottom:240px;
+//   animation-duration:47.1s;
+//   -webkit-animation-duration:47.1s;
+//    animation-name:clouds-lg;
+//   -webkit-animation-name:clouds-lg;
+// }
+// .background:before{
+//   background-image:url(http://s10.postimg.org/679m6l1sp/cloud_sm.png);
+//   height:181px;
+//   bottom:300px;
+//   animation-duration:58.5s;
+//   -webkit-animation-duration:58.5s;
+//   animation-name:clouds-sm;
+//   -webkit-animation-name:clouds-sm;
+// }
+// .mario{
+//   position:absolute;
+//   bottom:55px;
+//   left:50%;
+//   transform: translateX(-50%);
+//   background-image:url(http://s15.postimg.org/anpznxccr/mario.png);
+//   background-position-x:0px;
+//   height:88px;
+//   width:44px;
+//   animation:walk .5s steps(1, end) infinite;
+//   -webkit-animation:walk .5s steps(1, end) infinite;
+//   -webkit-animation-play-state: paused;
+//   animation-play-state: paused;
+// }
+//
+// .right:focus ~ .background,
+// .right:focus ~ .background .mario{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+// }
+// .left:focus ~ .background{
+//   animation-name:background2;
+//   -webkit-animation-name:background2;
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+// }
+// .left:focus ~ .background .mario{
+//   -ms-transform: rotateY(180deg) translateX(50%);
+//   -webkit-transform: rotateY(180deg) translateX(50%);
+//   transform: rotateY(180deg) translateX(50%);
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+// }
+//
+// .left:focus ~ .background:before, .left:focus ~ .background:after,
+// .right:focus ~ .background:before, .right:focus ~ .background:after,
+// .jump-left:focus ~ .background:before, .jump-left:focus ~ .background:after,
+// .jump-right:focus ~ .background:before, .jump-right:focus ~ .background:after{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+// }
+//
+// .jump-right:focus ~ .background{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+// }
+// .jump-right:focus ~ .background .mario{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+//   animation:walk .5s steps(1, end) infinite, jump 1s ease;
+//   -webkit-animation:walk .5s steps(1, end) infinite, jump 1s ease;
+// }
+//
+// .jump-left:focus ~ .background{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+//   animation-name:background2;
+//   -webkit-animation-name:background2;
+// }
+// .jump-left:focus ~ .background .mario{
+//   -webkit-animation-play-state: running;
+//   animation-play-state: running;
+//   -ms-transform: rotateY(180deg) translateX(50%);
+//   -webkit-transform: rotateY(180deg) translateX(50%);
+//   transform: rotateY(180deg) translateX(50%);
+//   animation:walk .5s steps(1, end) infinite, jump 1s ease;
+//   -webkit-animation:walk .5s steps(1, end) infinite, jump 1s ease;
+// }
+//
+// @keyframes walk{
+//   50%{
+//     background-position:-45px 0px;
+//   }
+// }
+// @-webkit-keyframes walk{
+//   50%{background-position-x:-45px;}
+// }
+// @keyframes jump{
+//   0%, 100%{
+//   background-position:-145px 0px;
+//   width:50px;
+//   }
+//   50%{bottom:250px;}
+// }
+// @-webkit-keyframes jump{
+//   0%, 100%{
+//   background-position-x:-145px;
+//   width:50px;
+//   }
+//   50%{bottom:250px;}
+// }
+// @keyframes background{
+//   100%{background-position:-600px 100%;}
+// }
+// @-webkit-keyframes background{
+//   100%{background-position-x:-600px;}
+// }
+// @keyframes background2{
+//   100%{background-position:600px 100%;}
+// }
+// @-webkit-keyframes background2{
+//   100%{background-position-x:600px;}
+// }
+// @keyframes clouds-lg{
+//   100%{background-position:-634px 0px;}
+// }
+// @-webkit-keyframes clouds-lg{
+//   100%{background-position-x:-634px;}
+// }
+// @keyframes clouds-sm{
+//   100%{background-position:-485px 0px;}
+// }
+// @-webkit-keyframes clouds-sm{
+//   100%{background-position-x:-485px;}
+// }
+//
+// .controls{
+//   font-family: Courier New, Courier, monospace;
+//   text-align:justify;
+// }
+// .controls div{
+//   min-width:250px;
+//   padding:0 1em 1em 1em;
+//   display:inline-block;
+// }
