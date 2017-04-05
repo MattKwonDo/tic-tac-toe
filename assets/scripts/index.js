@@ -72,38 +72,100 @@ let games = [
 ]
 
 // define number of plays and playerTurn to keep track of who should be playing
-let plays = 0
+let play = 6
 let playerTurn = 'playerX'
 
 // define grid to store game state
-let grid = [
-  [1,null,null],
-  [null,null,null],
-  [null,null,null]
-]
-let int = [[0,0,0],[null,1,null],[1,null,1]]
+let grid = [[0,0,3],[null,1,null],[0,null,1]]
 
-let diagonalSum = function (array) {
-    let total = 0
-    for (row = 0; row < array.length; row++) {
-        total += array[row][row];
-    }
-    return total;
-}
-
-console.log(diagonalSum(int))
 
 // function to check to see if someone has won and change game states and winner loser, drawer, and counts
+// combine all of the below functions into one function, reset total to 0 after each for loop
 // let overCheck = function {
-//   for (let i = 0; )
-//   let sumRow = grid[0].reduce((a, b) => a + b, 0);
-//   console.log(sum)
-//   let sumRow2 = grid[1].reduce((a, b) => a + b, 0);
-//   console.log(sumRow2)
-//   let sumRow3 = grid[1].reduce((a, b) => a + b, 0);
-//   console.log(sumRow2)
-// }
 
+let winCheck = function (array) {
+  // add 1 to set the current play
+  play += 1
+  // change the player to whose turn it is next
+  if (playerTurn === 'playerX') {
+    playerTurn = 'playerO'
+  } else {
+    playerTurn = 'playerX'
+  }
+  // if this is the 5th play or lower, then exit as no one could have won
+  if (play < 6) {
+    return
+  }
+  // run through the score checks
+  let total = 0
+  let sumForwardDiagonal = 0
+  let sumBackwardDiagonal = 0
+  let sumCol0 = 0
+  let sumCol1 = 0
+  let sumCol2 = 0
+  let sumRow0 = 0
+  let sumRow1 = 0
+  let sumRow2 = 0
+  for (let i = 0; i < array.length; i++) {
+    // total starts at upper left corner and moves down and to right
+    sumForwardDiagonal += array[i][i]
+    sumBackwardDiagonal += array[i][array[i].length - i - 1]
+    sumCol0 += array[i][0]
+    sumCol1 += array[i][1]
+    sumCol2 += array[i][2]
+    sumRow0 += array[0][i]
+    sumRow1 += array[1][i]
+    sumRow2 += array[2][i]
+
+  }
+
+  total = sumCol0 + sumCol1 + sumCol2
+
+  console.log(sumForwardDiagonal + ' ' +
+  sumBackwardDiagonal + ' ' +
+  sumCol0 + ' ' +
+  sumCol1 + ' ' +
+  sumCol2 + ' ' +
+  sumRow0 + ' ' +
+  sumRow1 + ' ' +
+  sumRow2 + ' and col total = ' +
+  total + ' and row total = ' +
+  (sumRow0 + sumRow1 + sumRow2) + ' and total total = '
+  )
+  // if statement to set game over and winners if any of the row/col/diag combos are = 3 or 0
+  return total
+}
+console.log(winCheck(grid))
+
+// below is redundant now
+
+// let sumRow0 = grid[0].reduce((a, b) => a + b, 0);
+//   console.log(sum)
+// let sumRow1 = grid[1].reduce((a, b) => a + b, 0);
+//   console.log(sumRow2)
+// let sumRow2 = grid[1].reduce((a, b) => a + b, 0);
+//   console.log(sumRow2)
+
+// let diagonalForwardSum = function (array) {
+//     let total = 0
+//     for (let i = 0; i < array.length; i++) {
+//       // total starts at upper left corner and moves down and to right
+//         total += array[i][i]
+//     }
+//     return total;
+// }
+// console.log(diagonalForwardSum(grid))
+//
+// let diagonalBackSum = function (array) {
+//     let total = 0
+//     for (let i = 0; i < array.length; i++) {
+//       // total starts at upper right corner, moves down to left
+//         total += array[i][array[i].length - i - 1]
+//         // array[array.length] - row-1][array.length - row-1]
+//     }
+//     return total;
+// }
+// console.log(diagonalBackSum(grid))
 
 let logic = function () {
   // when click happens add 1 to plays and change playerTurn
@@ -115,7 +177,7 @@ let logic = function () {
     continue
   }
   // when plays < 5, continue, when greater or equal to 5 check to see if someone has won
-  if (plays < 4) {
+  if (plays < 5) {
     continue
   }
   if (plays > 4) {
@@ -130,7 +192,9 @@ let logic = function () {
 
   }
 
-
+module.exports {
+  winCheck
+}
 // Game play:
 // 1. X starts
 // 2. X clicks a box
