@@ -78,7 +78,6 @@ let playerTurn = 'playerX'
 // define grid to store game state
 let grid = [[0,0,3],[null,1,null],[0,null,1]]
 
-
 // function to check to see if someone has won and change game states and winner loser, drawer, and counts
 // combine all of the below functions into one function, reset total to 0 after each for loop
 // let overCheck = function {
@@ -86,14 +85,14 @@ let grid = [[0,0,3],[null,1,null],[0,null,1]]
 let winCheck = function (array) {
   // add 1 to set the current play
   play += 1
-  // change the player to whose turn it is next
-  if (playerTurn === 'playerX') {
-    playerTurn = 'playerO'
-  } else {
-    playerTurn = 'playerX'
-  }
   // if this is the 5th play or lower, then exit as no one could have won
   if (play < 6) {
+    // change the player to whose turn it is next
+    if (playerTurn === 'playerX') {
+      playerTurn = 'playerO'
+    } else {
+      playerTurn = 'playerX'
+    }
     return
   }
   // run through the score checks
@@ -116,7 +115,6 @@ let winCheck = function (array) {
     sumRow0 += array[0][i]
     sumRow1 += array[1][i]
     sumRow2 += array[2][i]
-
   }
 
   total = sumCol0 + sumCol1 + sumCol2
@@ -132,7 +130,17 @@ let winCheck = function (array) {
   total + ' and row total = ' +
   (sumRow0 + sumRow1 + sumRow2) + ' and total total = '
   )
+  // change the player to whose turn it is next
+  if (playerTurn === 'playerX') {
+    playerTurn = 'playerO'
+  } else {
+    playerTurn = 'playerX'
+  }
   // if statement to set game over and winners if any of the row/col/diag combos are = 3 or 0
+  //  if (plays === 9 | one of the rows === 3 or 0) {
+  //     currentGame.over = true
+  //  }
+  //
   return total
 }
 console.log(winCheck(grid))
@@ -167,32 +175,32 @@ console.log(winCheck(grid))
 // }
 // console.log(diagonalBackSum(grid))
 
-let logic = function () {
-  // when click happens add 1 to plays and change playerTurn
-  // onClick - how to invoke???
-  plays += 1
-  if (playerTurn = 'playerX') {
-    playerTurn = 'playerO'
-  } else {
-    continue
-  }
-  // when plays < 5, continue, when greater or equal to 5 check to see if someone has won
-  if (plays < 5) {
-    continue
-  }
-  if (plays > 4) {
+// let logic = function () {
+//   // when click happens add 1 to plays and change playerTurn
+//   // onClick - how to invoke???
+//   plays += 1
+//   if (playerTurn = 'playerX') {
+//     playerTurn = 'playerO'
+//   } else {
+//     continue
+//   }
+//   // when plays < 5, continue, when greater or equal to 5 check to see if someone has won
+//   if (plays < 5) {
+//     continue
+//   }
+//   if (plays > 4) {
+//
+//   }
+//   // change game status to over when 9 plays
+//   if (plays = 9) {
+//
+//      if
+//     currentGame.over = true
+//   }
+//
+//   }
 
-  }
-  // change game status to over when 9 plays
-  if (plays = 9) {
-
-     if
-    currentGame.over = true
-  }
-
-  }
-
-module.exports {
+module.exports = {
   winCheck
 }
 // Game play:

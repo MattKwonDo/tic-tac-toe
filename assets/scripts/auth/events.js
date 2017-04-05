@@ -44,8 +44,10 @@ const byId = function (e) {
 }
 
 const onClick = function (event) {
+  const data = getFormFields(this)
   console.log('ayo222')
-  // console.log($('#test1'))
+  console.log($('#test1'))
+  console.log(data)
   $(this).css('background-color', '#5e91fe')
   // $(this).css('border-color', '#5e91fe')
   // $(this).html('img', src='images/questionBlock128.png')
