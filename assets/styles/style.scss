@@ -9,24 +9,26 @@ body {
   //  background-color:#5E91FE;
   //  height:80%;
   //  position:relative;
-  //  animation:background 5s;
-  //  -webkit-animation:background 5s;
-  //  animation-iteration-count: infinite;
-  //  -webkit-animation-iteration-count: infinite;
-  //  animation-timing-function: linear;
-  //  -webkit-animation-timing-function: linear;
-  //  animation-play-state: paused;
-  //  -webkit-animation-play-state: paused;
 }
 
 p {
   color: $font-color;
 }
 
+img {
+  text-align: center;
+  margin: 0 auto;
+  padding: auto;
+  display:block;
+}
+
 .col-xs-4 {
-  border: blue solid;
+  background-color: $box-background-color;
+  border: #000 solid;
   height: 100px;
   width: 100px;
+  text-align: center;
+  padding: auto;
 }
 
 // html, body{
