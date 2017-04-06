@@ -5,6 +5,9 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+const gameApi = require('./gameApi.js')
+const gameUi = require('./gameUi.js')
+
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -200,7 +203,7 @@ let games = [
 ]
 
 // define number of plays and playerTurn to keep track of who should be playing
-let play = 6
+let play = 0
 let playerTurn = 'playerX'
 
 // define grid to store game state
@@ -358,7 +361,79 @@ let valueCalc = function (array, valArray) {
 //   if
 // }
 
+//
+//
+// Below is the create game stuff
+const onCreateGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.title.length !== 0) {
+    gameApi.create(data)
+    .then(gameUi.onNoContentSuccess)
+    .catch(gameUi.onError)
+  } else {
+    console.log('Please provide a game name!')
+  }
+}
+
+const onGetGames = function (event) {
+  event.preventDefault()
+
+  gameApi.index()
+    .then(gameUi.onSuccess)
+    .catch(gameUi.onError)
+}
+
+const onGetGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.id.length !== 0) {
+    gameApi.show(game.id)
+      .then(gameUi.onSuccess)
+      .catch(gameUi.onError)
+  } else {
+    console.log('Please provide a game id!')
+  }
+}
+
+const onDeleteGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.id.length !== 0) {
+    gameApi.destroy(game.id)
+    .then(gameUi.onSuccess)
+    .catch(gameUi.onError)
+  } else {
+    console.log('Please provide a game id!')
+  }
+}
+
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.id.length !== 0) {
+    gameApi.update(data)
+    .then(gameUi.onNoContentSuccess)
+    .catch(gameUi.onError)
+  } else {
+    console.log('Please provide a game id!')
+  }
+}
+
 module.exports = {
   addHandlers,
-  valueCalc
+  valueCalc,
+  onGetGames,
+  onGetGame,
+  onDeleteGame,
+  onUpdateGame,
+  onCreateGame
 }
