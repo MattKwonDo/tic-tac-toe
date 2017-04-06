@@ -42,10 +42,6 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const byId = function (e) {
-  return document.getElementById(e)
-}
-
 const onClick = function (event) { // may not need 'event'
   // only allow a play if the box hasn't been clicked
   if (this.innerHTML === 'x' | this.innerHTML === 'o' | $(this).text === 'x') {
@@ -79,6 +75,7 @@ const onClick = function (event) { // may not need 'event'
   } else {
     $(this).css('background-color', 'red')
     $(this).css('font-size', '50px')
+    // $(this).css('background-image', 'url')
     this.innerHTML = 'o'
     const value = this.innerHTML
     const data = {
@@ -97,59 +94,12 @@ const onClick = function (event) { // may not need 'event'
     // .catch(ui.newMoveFailure)
   }
   $(this).off('click')
-
-  // const data = getFormFields(this)
-  // console.log('ayo222')
-  // console.log($('#test1')) // change this to 'event' instead of test1???
-  // console.log(data)
-
-  // update the box based on the play // this might need to be after the game logic
-  // if (play % 2 === 1) {
-  // $(this).css('background-color', '#5e91fe')
-  // $(this).css('font-size', '50px')
-  // $(this).text('x')
-  // } else {
-  //   $(this).css('background-color', '#5e91fe')
-  //   $(this).css('font-size', '50px')
-  //   $(this).text('x')
-  // }
-
-  // $(this).css('border-color', '#5e91fe')
-  // $(this).html('img', src='images/questionBlock128.png')
-
-  // console.log(document.getElementById($('#test1')))
-  // return document.getElementById($('#test1')).src = "images/questionBlock128.png"
 }
 
 // const newMoveSuccess = (data) => {
 //   gameStore.game.clickCount++
 //   console.log(gameStore.game)
 // }
-
-const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#sign-out').on('submit', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
-  // $('#test1').on('click', onClick)
-  // $('#test2').on('click', onClick)
-  // $('#test3').on('click', onClick)
-  // $('#test4').on('click', onClick)
-  // $('#test5').on('click', onClick)
-  // $('#test6').on('click', onClick)
-  // $('#test7').on('click', onClick)
-  // $('#test8').on('click', onClick)
-  // $('#test9').on('click', onClick)
-  $('#1').on('click', onClick)
-  $('#2').on('click', onClick)
-  $('#3').on('click', onClick)
-  $('#4').on('click', onClick)
-  $('#5').on('click', onClick)
-  $('#6').on('click', onClick)
-  $('#7').on('click', onClick)
-  $('#8').on('click', onClick)
-  $('#9').on('click', onClick)
-}
 
 let playerX = {
   id: 1,
@@ -364,18 +314,22 @@ let valueCalc = function (array, valArray) {
 //
 //
 // Below is the create game stuff
-const onCreateGame = function (event) {
+const onCreateGame = function (event) { // deleted event
   event.preventDefault()
-  const data = getFormFields(event.target)
-  const game = data.game
-
-  if (game.title.length !== 0) {
-    gameApi.create(data)
+  // const data = getFormFields(event.target)
+  // const game = data.game
+  // console.log(data)
+  // console.log(game)
+  // if (game.id.length !== 0) {
+  //   console.log(game.id.length)
+  console.log('1 ran!')
+  gameApi.create()
     .then(gameUi.onNoContentSuccess)
     .catch(gameUi.onError)
-  } else {
-    console.log('Please provide a game name!')
-  }
+  // } else {
+  //   console.log('2 ran!')
+  // }
+  console.log('3 ran!')
 }
 
 const onGetGames = function (event) {
@@ -428,12 +382,28 @@ const onUpdateGame = function (event) {
   }
 }
 
+const addHandlers = () => {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#sign-out').on('submit', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
+  $('#1').on('click', onClick)
+  $('#2').on('click', onClick)
+  $('#3').on('click', onClick)
+  $('#4').on('click', onClick)
+  $('#5').on('click', onClick)
+  $('#6').on('click', onClick)
+  $('#7').on('click', onClick)
+  $('#8').on('click', onClick)
+  $('#9').on('click', onClick)
+}
+
 module.exports = {
   addHandlers,
   valueCalc,
+  onCreateGame,
   onGetGames,
   onGetGame,
   onDeleteGame,
-  onUpdateGame,
-  onCreateGame
+  onUpdateGame
 }

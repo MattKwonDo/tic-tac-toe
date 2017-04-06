@@ -18,9 +18,9 @@ const authEvents = require('./auth/events.js')
 $(() => {
   authEvents.addHandlers()
 
-  $('#game-create').on('submit', authEvents.onCreategame)
-  $('#games-search').on('submit', authEvents.onGetgames)
-  $('#game-search').on('submit', authEvents.onGetgame)
+  $('#game-create').on('submit', authEvents.onCreateGame)
+  $('#games-search').on('submit', authEvents.onGetGames)
+  $('#game-search').on('submit', authEvents.onGetGame)
   // $('#game-delete').on('submit', authEvents.onDeletegame)
-  $('#game-update').on('submit', authEvents.onUpdategame)
+  $('#game-update').on('submit', authEvents.onUpdateGame)
 })

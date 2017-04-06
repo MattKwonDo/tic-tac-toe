@@ -7,6 +7,8 @@
 // GET /games/:id/watch games#watch
 
 const app = require('../app.js')
+const config = require('../config')
+const store = require('../store')
 
 const index = function () {
   return $.ajax({
@@ -16,10 +18,26 @@ const index = function () {
 }
 
 const create = function (data) {
+  console.log('2 ran!')
   return $.ajax({
     url: app.host + '/games/',
     method: 'POST',
-    data: data
+    // data: data
+    data: {
+      'game': {
+        'id': 3,
+        'cells': ['x','o','x','o','x','o','x','o','x'],
+        'over': true,
+        'player_x': {
+          'id': 1,
+          'email': 'and@and.com'
+        },
+        'player_o': null
+      }
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
