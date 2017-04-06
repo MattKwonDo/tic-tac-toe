@@ -62,6 +62,10 @@ const onClick = function (event) {
 }
 
 const addHandlers = () => {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#sign-out').on('submit', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
   // $('#test1').on('click', onClick)
   // $('#test2').on('click', onClick)
   // $('#test3').on('click', onClick)
