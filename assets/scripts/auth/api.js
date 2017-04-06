@@ -12,6 +12,7 @@ const signUp = (data) => {
 }
 
 const signIn = (data) => {
+  // need to create object that can reference later.. // const data = data
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
@@ -19,7 +20,12 @@ const signIn = (data) => {
   })
 }
 
-const signOut = () => {
+const signOut = (data) => {
+  // don't allow them to sign out if haven't signed in
+  // if (Object.keys(user).length === 0) {
+  //   console.log('ah ah ah! ah ah ah!')
+  //   return 'ah ah ah! ah ah ah!'
+  // }
   return $.ajax({
     url: config.apiOrigin + '/sign-out' + '/' + store.user.id,
     method: 'DELETE',
@@ -30,6 +36,11 @@ const signOut = () => {
 }
 
 const changePassword = (data) => {
+  // don't allow them to change pw if haven't signed in
+  // if (Object.keys(user).length === 0) {
+  //   console.log('ah ah ah! ah ah ah!')
+  //   return 'ah ah ah! ah ah ah!'
+  // }
   return $.ajax({
     url: config.apiOrigin + '/change-password' + '/' + store.user.id,
     method: 'PATCH',
