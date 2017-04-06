@@ -69,6 +69,48 @@
           </ul>
         </li>
       </ul>
+
+      <h1>API Token Auth</h1>
+      <form id="sign-up">
+        <fieldset>
+          <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" id="sign-up-email" placeholder="email please">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="password please">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-conf" placeholder="confirm password please">
+          <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" id="sign-in-email" placeholder="email please">
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="password please">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+
+      <form id="change-password">
+        <fieldset>
+          <legend>Change password!</legend>
+          <input type="password" name="passwords[old]" id="change-password-old" placeholder="current password please">
+          <!-- <input type="password" name="passwords[old]" id="change-password-old-conf" placeholder="confirm current password please"> -->
+
+          <input type="password" name="passwords[new]" id="change-password-new" placeholder="new password please">
+
+          <input type="submit" name="submit" value="Change password!">
+        </fieldset>
+      </form>
+
+      <p>Accessing an authenticated API.</p>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -122,21 +164,21 @@
       <!-- id="clickBox"> -->
 
         <div class="row">
-          <div class="col-xs-4 box" id="test11" class="icon"><img id="test1" src="images/questionBlock64.png" src2="images/questionBlock128.png" title="what's it going to be?" alt="top left square"/></div> <!-- http://www.iconarchive.com/show/super-mario-icons-by-ph03nyx/Retro-Block-Question-2-icon.html -->
-          <div class="col-xs-4 box" id="test12" class="icon"><img id="test2" src="images/questionBlock64.png" title="what's it going to be?" alt="top middle square"/></div>
-          <div class="col-xs-4 box" id="test13" class="icon"><img id="test3" src="images/questionBlock64.png" title="what's it going to be?" alt="top right square"/></div>
+          <div class="col-xs-4 box" id="1" class="icon"><img id="test1" src="images/questionBlock64.png" src2="images/questionBlock128.png" title="what's it going to be?" alt="top left square"/></div> <!-- http://www.iconarchive.com/show/super-mario-icons-by-ph03nyx/Retro-Block-Question-2-icon.html -->
+          <div class="col-xs-4 box" id="2" class="icon"><img id="test2" src="images/questionBlock64.png" title="what's it going to be?" alt="top middle square"/></div>
+          <div class="col-xs-4 box" id="3" class="icon"><img id="test3" src="images/questionBlock64.png" title="what's it going to be?" alt="top right square"/></div>
         </div>
 
         <div class="row">
-          <div class="col-xs-4 box" id="test14" class="icon"><img id="test4" src="images/questionBlock64.png" title="what's it going to be?" alt="middle left square"/></div>
-          <div class="col-xs-4 box" id="test15" class="icon"><img id="test5" src="images/questionBlock64.png" title="what's it going to be?" alt="middle middle square"/></div>
-          <div class="col-xs-4 box" id="test16" class="icon"><img id="test6" src="images/questionBlock64.png" title="what's it going to be?" alt="middle right square"/></div>
+          <div class="col-xs-4 box" id="4" class="icon"><img id="test4" src="images/questionBlock64.png" title="what's it going to be?" alt="middle left square"/></div>
+          <div class="col-xs-4 box" id="5" class="icon"><img id="test5" src="images/questionBlock64.png" title="what's it going to be?" alt="middle middle square"/></div>
+          <div class="col-xs-4 box" id="6" class="icon"><img id="test6" src="images/questionBlock64.png" title="what's it going to be?" alt="middle right square"/></div>
         </div>
 
         <div class="row">
-          <div class="col-xs-4 box" id="test17" class="icon"><img id="test7" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom left square"/></div>
-          <div class="col-xs-4 box" id="test18" class="icon"><img id="test8" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom middle square"/></div>
-          <div class="col-xs-4 box" id="test19" class="icon"><img id="test9" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom right square"/></div>
+          <div class="col-xs-4 box" id="7" class="icon"><img id="test7" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom left square"/></div>
+          <div class="col-xs-4 box" id="8" class="icon"><img id="test8" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom middle square"/></div>
+          <div class="col-xs-4 box" id="9" class="icon"><img id="test9" src="images/questionBlock64.png" title="what's it going to be?" alt="bottom right square"/></div>
         </div>
       </div>
 

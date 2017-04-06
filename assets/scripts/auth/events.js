@@ -2,42 +2,42 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-// const api = require('./api')
-// const ui = require('./ui')
-//
-// const onSignUp = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   api.signUp(data)
-//     .then(ui.signUpSuccess)
-//     .catch(ui.signUpFailure)
-// }
-//
-// const onSignIn = function (event) {
-//   // test if working console.log('sign in function worked, bro')
-//   event.preventDefault()
-//   const data = getFormFields(this)
-//   api.signIn(data)
-//     .then(ui.signInSuccess)
-//     .catch(ui.signInFailure)
-// }
-//
-// const onSignOut = function (event) {
-//   // test if working console.log('sign in function worked, bro')
-//   event.preventDefault()
-//   // console.log('sign out ran ')
-//   api.signOut()
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
-//
-// const onChangePassword = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
-// }
+const api = require('./api')
+const ui = require('./ui')
+
+const onSignUp = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
+}
+
+const onSignIn = function (event) {
+  // test if working console.log('sign in function worked, bro')
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
+const onSignOut = function (event) {
+  // test if working console.log('sign in function worked, bro')
+  event.preventDefault()
+  // console.log('sign out ran ')
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
+const onChangePassword = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
 
 const byId = function (e) {
   return document.getElementById(e)
@@ -46,7 +46,7 @@ const byId = function (e) {
 const onClick = function (event) {
   const data = getFormFields(this)
   console.log('ayo222')
-  console.log($('#test1'))
+  console.log($('#test1')) // change this to 'event' instead of test1???
   console.log(data)
   $(this).css('background-color', '#5e91fe')
   // $(this).css('border-color', '#5e91fe')
@@ -71,15 +71,15 @@ const addHandlers = () => {
   // $('#test7').on('click', onClick)
   // $('#test8').on('click', onClick)
   // $('#test9').on('click', onClick)
-  $('#test11').on('click', onClick)
-  $('#test12').on('click', onClick)
-  $('#test13').on('click', onClick)
-  $('#test14').on('click', onClick)
-  $('#test15').on('click', onClick)
-  $('#test16').on('click', onClick)
-  $('#test17').on('click', onClick)
-  $('#test18').on('click', onClick)
-  $('#test19').on('click', onClick)
+  $('#1').on('click', onClick)
+  $('#2').on('click', onClick)
+  $('#3').on('click', onClick)
+  $('#4').on('click', onClick)
+  $('#5').on('click', onClick)
+  $('#6').on('click', onClick)
+  $('#7').on('click', onClick)
+  $('#8').on('click', onClick)
+  $('#9').on('click', onClick)
 }
 
 module.exports = {
