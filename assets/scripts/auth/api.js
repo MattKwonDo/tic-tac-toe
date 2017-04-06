@@ -51,6 +51,17 @@ const changePassword = (data) => {
   })
 }
 
+// const logMove = (data) => {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/' + gameStore.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
+
 module.exports = {
   signUp,
   signIn,
