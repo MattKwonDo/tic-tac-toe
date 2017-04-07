@@ -3,4 +3,6 @@
 const gameStore = {
 }
 
-module.exports = gameStore
+module.exports = {
+  gameStore
+}

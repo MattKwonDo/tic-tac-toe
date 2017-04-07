@@ -1,26 +1,17 @@
 'use strict'
 
-// create game stuff
+// links to other files
 const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
 // new game setup
 const setup = require('../setup')
 // game id data
 const gameStore = require('../gameStore')
-
-      // game {
-      // cells: Array[9]
-      // id:11
-      // over:false
-      // player_o:null
-      // player_x:Object
-      // }
 // game logic
 const winCheck = require('../winCheck')
+// const bootstrap = require('bootstrap') // not sure if this is needed
 
-// const bootstrap = require('bootstrap')
-
-// Below is the create game stuff
+// Below is create game and click functionality
 // create game
 const onCreateGame = function (event) {
   event.preventDefault()
@@ -31,36 +22,82 @@ const onCreateGame = function (event) {
   console.log('3 ran!')
   // will want to reset board, reset handlers, load handlers
 }
-// update game state
-// const onUpdateGame = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   const game = data.game
-//
-//   if (game.id.length !== 0) {
-//     gameApi.updateGameState(data)
-//     .then(gameUi.onNoContentSuccess)
-//     .catch(gameUi.onError)
-//   } else {
-//     console.log('Please provide a game id!')
-//   }
-// }
 
 const onClick = function (event) { // may not need 'event'
   // only allow a play if the box hasn't been clicked
-  if (this.innerHTML === 'x' | this.innerHTML === 'o' | $(this).text === 'x') {
+  if (this.innerHTML === 'x' | this.innerHTML === 'o' | $(this).text === 'x' | $(this).text === 'o') {
     console.log('this box cannot be clicked again')
     return
   }
-  // keep track of the plays and set this as the next play if valid
-  setup.play += 1
-  // keep track of the box id
-  const index = parseInt($(this).attr('id'))
-  if (setup.play % 2 === 1) {
+
+  console.log(2)
+  if (gameStore.game.play % 2 === 0) {
+    console.log('xxxxxxxxxx')
+    console.log('1')
+    // keep track of the box id
+    const index = parseInt($(this).attr('id'))
+    // keep track of the plays and set this as the next play if valid
+    setup.play += 1
+    console.log('plays before this ', gameStore.game.play)
+    gameStore.game.play += 1
+    // updated display
     $(this).css('background-color', '#5e91fe')
     $(this).css('font-size', '50px')
-    this.innerHTML = 'x'
+    // this.innerHTML = 'x'
     $(this).text('x')
+    const value = this.innerHTML
+    const data = { // should this be a constructor function to have one for each play?
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': false
+      }
+    }
+    console.log(data)
+    console.log('gameStore game ', gameStore.game)
+    console.log('gameStore cells ', gameStore.game.cells)
+    console.log('gameStore id ', gameStore.game.id)
+    console.log('gameStore over ', gameStore.game.over)
+    console.log('gameStore player_o ', gameStore.game.player_o)
+    console.log('gameStore player_x ', gameStore.game.player_x)
+    console.log('gameStore plays ', gameStore.game.play)
+    console.log('clicked ' + value)
+    // log the play in the appropriate spot
+    gameStore.game.cells[gameStore.game.play - 1] = value
+    console.log(data)
+    console.log('gameStore game ', gameStore.game)
+    console.log('gameStore cells ', gameStore.game.cells)
+    console.log('gameStore id ', gameStore.game.id)
+    console.log('gameStore over ', gameStore.game.over)
+    console.log('gameStore player_o ', gameStore.game.player_o)
+    console.log('gameStore player_x ', gameStore.game.player_x)
+    console.log('gameStore plays ', gameStore.game.play)
+    // gameApi.updateGameState(data)
+    // .then(gameUi.playSuccess)
+    // .catch(gameUi.playFailure)
+// if player not x, then:
+  } else {
+    console.log('ooooooooo')
+    console.log('1')
+    // only allow a play if the box hasn't been clicked
+    if (this.innerHTML === 'x' | this.innerHTML === 'o' | $(this).text === 'x' | $(this).text === 'o') {
+      console.log('this box cannot be clicked again')
+      return
+    }
+    // keep track of the box id
+    const index = parseInt($(this).attr('id'))
+    // keep track of the plays and set this as the next play if valid
+    setup.play += 1
+    console.log('plays before this ', gameStore.game.play)
+    gameStore.game.play += 1
+    console.log(2)
+        // update display
+    $(this).css('background-color', 'red')
+    $(this).css('font-size', '50px')
+    // $(this).css('background-image', 'url')
+    this.innerHTML = 'o'
     const value = this.innerHTML
     const data = {
       'game': {
@@ -71,28 +108,25 @@ const onClick = function (event) { // may not need 'event'
         'over': false
       }
     }
-    console.log('clicked ' + value)
     console.log(data)
-    // gameApi.updateGameState(data)
-    // .then(gameUi.playSuccess)
-    // .catch(gameUi.playFailure)
-  } else {
-    $(this).css('background-color', 'red')
-    $(this).css('font-size', '50px')
-    // $(this).css('background-image', 'url')
-    this.innerHTML = 'o'
-    const value = this.innerHTML
-    const data = {
-      'play': {
-        'cell': {
-          'index': index,
-          'value': value
-        },
-        'over': false
-      }
-    }
+    console.log('gameStore game ', gameStore.game)
+    console.log('gameStore cells ', gameStore.game.cells)
+    console.log('gameStore id ', gameStore.game.id)
+    console.log('gameStore over ', gameStore.game.over)
+    console.log('gameStore player_o ', gameStore.game.player_o)
+    console.log('gameStore player_x ', gameStore.game.player_x)
+    console.log('gameStore plays ', gameStore.game.play)
     console.log('clicked ' + value)
+    // log the play in the appropriate spot
+    gameStore.game.cells[gameStore.game.play - 1] = value
     console.log(data)
+    console.log('gameStore game ', gameStore.game)
+    console.log('gameStore cells ', gameStore.game.cells)
+    console.log('gameStore id ', gameStore.game.id)
+    console.log('gameStore over ', gameStore.game.over)
+    console.log('gameStore player_o ', gameStore.game.player_o)
+    console.log('gameStore player_x ', gameStore.game.player_x)
+    console.log('gameStore plays ', gameStore.game.play)
     // gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
     // .catch(gameUi.playFailure)

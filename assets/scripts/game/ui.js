@@ -13,6 +13,7 @@ const createGameSuccess = (ajaxResponse) => {
   console.log('gameStore over ', gameStore.game.over)
   console.log('gameStore player_o ', gameStore.game.player_o)
   console.log('gameStore player_x ', gameStore.game.player_x)
+  console.log('gameStore plays', gameStore.game.play)
 }
 const createGameFailure = (error) => {
   console.error('sign in error is: ', error)
