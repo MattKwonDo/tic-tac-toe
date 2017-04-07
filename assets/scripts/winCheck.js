@@ -40,16 +40,6 @@ let winCheck = function (array, valArray) {
     valx.sumRow1 += array[1][i]
     valx.sumRow2 += array[2][i]
   }
-  // for (let i = 0; i < array.length; i++) {
-  //   valArray[0] += array[i][i] // forward diagonal sum  // starts at upper left corner and moves down and to right
-  //   valArray[1] += array[i][array[i].length - i - 1] // backward diagonal sum // starts at upper right corner and moves down and to left
-  //   valArray[2] += array[i][0] // col 0 sum
-  //   valArray[3] += array[i][1] // col 1 sum
-  //   valArray[4] += array[i][2] // col 2 sum
-  //   valArray[5] += array[0][i] // row 0 sum
-  //   valArray[6] += array[1][i] // row 1 sum
-  //   valArray[7] += array[2][i] // row 2 sum
-  // }
   for (let i = 0; i < array.length; i++) {
     valArray[0] = valx.sumForwardDiagonal // forward diagonal sum  // starts at upper left corner and moves down and to right
     valArray[1] = valx.sumBackwardDiagonal // backward diagonal sum // starts at upper right corner and moves down and to left

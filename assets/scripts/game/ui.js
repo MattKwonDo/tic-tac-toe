@@ -8,11 +8,11 @@ const createGameSuccess = (ajaxResponse) => {
   gameStore.game = ajaxResponse.game
   gameStore.game.play = 0
   console.log('gameStore game ', gameStore.game)
-  console.log('gameStore id ', gameStore.game.cells)
+  console.log('gameStore cells ', gameStore.game.cells)
   console.log('gameStore id ', gameStore.game.id)
-  console.log('gameStore id ', gameStore.game.over)
-  console.log('gameStore id ', gameStore.game.player_o)
-  console.log('gameStore id ', gameStore.game.player_x)
+  console.log('gameStore over ', gameStore.game.over)
+  console.log('gameStore player_o ', gameStore.game.player_o)
+  console.log('gameStore player_x ', gameStore.game.player_x)
 }
 const createGameFailure = (error) => {
   console.error('sign in error is: ', error)
