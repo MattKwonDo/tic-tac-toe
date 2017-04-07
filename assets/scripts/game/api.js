@@ -23,14 +23,14 @@ const create = function () {
   })
 }
 
-const updateGameState = (data) => {
+const updateGameState = (ajaxSend) => {
   return $.ajax({
     url: config.apiOrigin + '/games/' + gameStore.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data
+    data: ajaxSend
   })
 }
 

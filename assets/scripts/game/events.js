@@ -29,17 +29,17 @@ const onClick = function (event) { // may not need 'event'
     console.log('this box cannot be clicked again')
     return
   }
-
+  // gameUi.playSuccess()
   console.log(2)
-  if (gameStore.game.play % 2 === 0) {
+  if (setup.play % 2 === 0) {
     console.log('xxxxxxxxxx')
     console.log('1')
     // keep track of the box id
     const index = parseInt($(this).attr('id'))
     // keep track of the plays and set this as the next play if valid
     setup.play += 1
-    console.log('plays before this ', gameStore.game.play)
-    gameStore.game.play += 1
+    // gameStore.game.play += 1
+    console.log('plays before this ', setup.play)
     // updated display
     $(this).css('background-color', '#5e91fe')
     $(this).css('font-size', '50px')
@@ -62,10 +62,11 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore over ', gameStore.game.over)
     console.log('gameStore player_o ', gameStore.game.player_o)
     console.log('gameStore player_x ', gameStore.game.player_x)
-    console.log('gameStore plays ', gameStore.game.play)
+    // console.log('gameStore plays ', gameStore.game.play)
+    console.log('setup plays', setup.play)
     console.log('clicked ' + value)
     // log the play in the appropriate spot
-    gameStore.game.cells[gameStore.game.play - 1] = value
+    gameStore.game.cells[setup.play - 1] = value
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -73,8 +74,9 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore over ', gameStore.game.over)
     console.log('gameStore player_o ', gameStore.game.player_o)
     console.log('gameStore player_x ', gameStore.game.player_x)
-    console.log('gameStore plays ', gameStore.game.play)
-    // gameApi.updateGameState(data)
+    // console.log('gameStore plays ', gameStore.game.play)
+    console.log('setup plays', setup.play)
+    gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
     // .catch(gameUi.playFailure)
 // if player not x, then:
@@ -90,8 +92,8 @@ const onClick = function (event) { // may not need 'event'
     const index = parseInt($(this).attr('id'))
     // keep track of the plays and set this as the next play if valid
     setup.play += 1
-    console.log('plays before this ', gameStore.game.play)
-    gameStore.game.play += 1
+    // gameStore.game.play += 1
+    console.log('plays before this ', setup.play)
     console.log(2)
         // update display
     $(this).css('background-color', 'red')
@@ -115,10 +117,11 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore over ', gameStore.game.over)
     console.log('gameStore player_o ', gameStore.game.player_o)
     console.log('gameStore player_x ', gameStore.game.player_x)
-    console.log('gameStore plays ', gameStore.game.play)
+    // console.log('gameStore plays ', gameStore.game.play)
+    console.log('setup plays', setup.play)
     console.log('clicked ' + value)
     // log the play in the appropriate spot
-    gameStore.game.cells[gameStore.game.play - 1] = value
+    gameStore.game.cells[setup.play - 1] = value
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -126,8 +129,9 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore over ', gameStore.game.over)
     console.log('gameStore player_o ', gameStore.game.player_o)
     console.log('gameStore player_x ', gameStore.game.player_x)
-    console.log('gameStore plays ', gameStore.game.play)
-    // gameApi.updateGameState(data)
+    // console.log('gameStore plays ', gameStore.game.play)
+    console.log('setup plays', setup.play)
+    gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
     // .catch(gameUi.playFailure)
   }
@@ -135,17 +139,17 @@ const onClick = function (event) { // may not need 'event'
 }
 
 const addHandlers = () => {
-  $('#1').one('click', onClick)
-  $('#2').one('click', onClick)
-  $('#3').one('click', onClick)
-  $('#4').one('click', onClick)
-  $('#5').one('click', onClick)
-  $('#6').one('click', onClick)
-  $('#7').one('click', onClick)
-  $('#8').one('click', onClick)
-  $('#9').one('click', onClick)
-  $('#game-create').on('click', onCreateGame)
-  $('#game-create-new').on('click', onCreateGame)
+  // $('#1').one('click', onClick)
+  // $('#2').one('click', onClick)
+  // $('#3').one('click', onClick)
+  // $('#4').one('click', onClick)
+  // $('#5').one('click', onClick)
+  // $('#6').one('click', onClick)
+  // $('#7').one('click', onClick)
+  // $('#8').one('click', onClick)
+  // $('#9').one('click', onClick)
+  $('.game-update').one('click', onClick)
+  $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
   // $('.game-update').on('submit', onClick)
 }
 
