@@ -6,9 +6,10 @@
 // PATCH /games/:id games#update
 // GET /games/:id/watch games#watch
 
-const app = require('../app.js')
-const config = require('../config')
+const app = require('../app.js') // may not be needed
+const config = require('../config') // why this over another one?
 const store = require('../store')
+const gameStore = require('../game/gameStore')
 
 // create a new game
 const create = function () {
@@ -24,7 +25,7 @@ const create = function () {
 
 const updateGameState = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + store.game.id,
+    url: config.apiOrigin + '/games/' + gameStore.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

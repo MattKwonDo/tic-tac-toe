@@ -17,11 +17,4 @@ const authEvents = require('./auth/events.js')
 // On document ready
 $(() => {
   authEvents.addHandlers()
-
-  $('#game-create').on('submit', authEvents.onCreateGame)
-  $('#game-create-new').on('submit', authEvents.onCreateGame)
-  $('#games-search').on('submit', authEvents.onGetGames)
-  $('#game-search').on('submit', authEvents.onGetGame)
-  // $('#game-delete').on('submit', authEvents.onDeletegame)
-  $('#game-update').on('submit', authEvents.onUpdateGame)
 })
