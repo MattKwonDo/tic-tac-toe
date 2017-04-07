@@ -10,48 +10,25 @@ const app = require('../app.js')
 const config = require('../config')
 const store = require('../store')
 
-const index = function () {
-  return $.ajax({
-    url: app.host + '/games',
-    method: 'GET'
-  })
-}
-
-const create = function (data) {
+// create a new game
+const create = function () {
   console.log('2 ran!')
   return $.ajax({
-    url: app.host + '/games/',
+    url: config.apiOrigin + '/games/',
     method: 'POST',
-    // data: data
-    data: {
-      'game': {
-        'id': 3,
-        'cells': ['x','o','x','o','x','o','x','o','x'],
-        'over': true,
-        'player_x': {
-          'id': 1,
-          'email': 'and@and.com'
-        },
-        'player_o': null
-      }
-    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
   })
 }
 
-const show = function (id) {
+const updateGameState = (data) => {
   return $.ajax({
-    url: app.host + '/games/' + id,
-    method: 'GET'
-  })
-}
-
-const update = function (data) {
-  return $.ajax({
-    url: app.host + '/games/' + data.book.id,
+    url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data: data
   })
 }
@@ -59,18 +36,21 @@ const update = function (data) {
 //
 // placeholder for // GET /games/:id/watch games#watch
 //
-
-// const destroy = function (id) {
+// const index = function () {
 //   return $.ajax({
-//     url: app.host + '/games/' + id,
-//     method: 'DELETE'
+//     url: config.apiOrigin + '/games',
+//     method: 'GET'
+//   })
+// }
+//
+// const show = function (id) {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/' + id,
+//     method: 'GET'
 //   })
 // }
 
 module.exports = {
-  index,
   create,
-  show,
-  update
-  // destroy,
+  updateGameState
 }

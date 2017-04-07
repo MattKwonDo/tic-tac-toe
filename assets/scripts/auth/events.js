@@ -8,6 +8,10 @@ const ui = require('./ui')
 const gameApi = require('./gameApi.js')
 const gameUi = require('./gameUi.js')
 
+// const bootstrap = require('bootstrap')
+
+// below is all sign in / out / change pw data
+// sign up
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -15,7 +19,7 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
-
+// sign in
 const onSignIn = function (event) {
   // test if working console.log('sign in function worked, bro')
   event.preventDefault()
@@ -24,7 +28,7 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
 }
-
+// sign out
 const onSignOut = function (event) {
   // test if working console.log('sign in function worked, bro')
   event.preventDefault()
@@ -33,7 +37,7 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-
+// change password
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -41,6 +45,33 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+//
+//
+// Below is the create game stuff
+// create game
+const onCreateGame = function (event) {
+  event.preventDefault()
+  console.log('1 ran!')
+  gameApi.create()
+    .then(gameUi.onNoContentSuccess)
+    .catch(gameUi.onError)
+  console.log('3 ran!')
+  // will want to reset board, reset handlers, load handlers
+}
+// update game state
+// const onUpdateGame = function (event) {
+//   event.preventDefault()
+//   const data = getFormFields(event.target)
+//   const game = data.game
+//
+//   if (game.id.length !== 0) {
+//     gameApi.updateGameState(data)
+//     .then(gameUi.onNoContentSuccess)
+//     .catch(gameUi.onError)
+//   } else {
+//     console.log('Please provide a game id!')
+//   }
+// }
 
 const onClick = function (event) { // may not need 'event'
   // only allow a play if the box hasn't been clicked
@@ -69,9 +100,9 @@ const onClick = function (event) { // may not need 'event'
     }
     console.log('clicked ' + value)
     console.log(data)
-    // api.logMove(data)
-    //   .then(ui.newMoveSuccess)
-    //   .catch(ui.newMoveFailure)
+    gameApi.updateGameState(data)
+    .then(gameUi.onNoContentSuccess)
+    .catch(gameUi.onError)
   } else {
     $(this).css('background-color', 'red')
     $(this).css('font-size', '50px')
@@ -89,17 +120,12 @@ const onClick = function (event) { // may not need 'event'
     }
     console.log('clicked ' + value)
     console.log(data)
-    // api.updateBoard(data)
-    // .then(ui.newMoveSuccess)
-    // .catch(ui.newMoveFailure)
+    gameApi.updateGameState(data)
+    .then(gameUi.onNoContentSuccess)
+    .catch(gameUi.onError)
   }
   $(this).off('click')
 }
-
-// const newMoveSuccess = (data) => {
-//   gameStore.game.clickCount++
-//   console.log(gameStore.game)
-// }
 
 let playerX = {
   id: 1,
@@ -313,74 +339,6 @@ let valueCalc = function (array, valArray) {
 
 //
 //
-// Below is the create game stuff
-const onCreateGame = function (event) { // deleted event
-  event.preventDefault()
-  // const data = getFormFields(event.target)
-  // const game = data.game
-  // console.log(data)
-  // console.log(game)
-  // if (game.id.length !== 0) {
-  //   console.log(game.id.length)
-  console.log('1 ran!')
-  gameApi.create()
-    .then(gameUi.onNoContentSuccess)
-    .catch(gameUi.onError)
-  // } else {
-  //   console.log('2 ran!')
-  // }
-  console.log('3 ran!')
-}
-
-const onGetGames = function (event) {
-  event.preventDefault()
-
-  gameApi.index()
-    .then(gameUi.onSuccess)
-    .catch(gameUi.onError)
-}
-
-const onGetGame = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const game = data.game
-
-  if (game.id.length !== 0) {
-    gameApi.show(game.id)
-      .then(gameUi.onSuccess)
-      .catch(gameUi.onError)
-  } else {
-    console.log('Please provide a game id!')
-  }
-}
-
-const onDeleteGame = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const game = data.game
-
-  if (game.id.length !== 0) {
-    gameApi.destroy(game.id)
-    .then(gameUi.onSuccess)
-    .catch(gameUi.onError)
-  } else {
-    console.log('Please provide a game id!')
-  }
-}
-
-const onUpdateGame = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const game = data.game
-
-  if (game.id.length !== 0) {
-    gameApi.update(data)
-    .then(gameUi.onNoContentSuccess)
-    .catch(gameUi.onError)
-  } else {
-    console.log('Please provide a game id!')
-  }
-}
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
@@ -396,14 +354,14 @@ const addHandlers = () => {
   $('#7').on('click', onClick)
   $('#8').on('click', onClick)
   $('#9').on('click', onClick)
+  $('#game-create').on('click', onCreateGame)
+  $('#game-create-new').on('click', onCreateGame)
+  // $('.game-update').on('submit', onClick)
 }
 
 module.exports = {
   addHandlers,
   valueCalc,
   onCreateGame,
-  onGetGames,
-  onGetGame,
-  onDeleteGame,
-  onUpdateGame
+  onClick
 }
