@@ -4,8 +4,8 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('../auth/api')
 const ui = require('../auth/ui')
 // create game stuff
-const gameApi = require('../game/api.js')
-const gameUi = require('../game/ui.js')
+const gameApi = require('./api.js')
+const gameUi = require('./ui.js')
 // game id data
 const gameStore = require('../gameStore')
       // game {
