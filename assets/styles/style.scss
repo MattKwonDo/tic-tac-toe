@@ -1,4 +1,7 @@
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'colors';
+
 body {
   background-color: $background-color;
   color: $font-color;
@@ -26,7 +29,13 @@ img {
   color: $background-color;
 }
 
-#spacer {
+.board {
+  margin: 0 auto;
+  float: left;
+  overflow: hidden;
+}
+
+.spaceRow {
   height: 50px;
   float: left;
   clear: both;
@@ -40,7 +49,7 @@ img {
 //   // float: left;
 // }
 
-.col-xs-4 {
+.game-update {
   background-color: $box-background-color;
   border: #000 solid;
   height: 100px;
