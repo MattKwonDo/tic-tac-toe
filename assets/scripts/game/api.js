@@ -34,24 +34,41 @@ const updateGameState = (ajaxSend) => {
   })
 }
 
-//
+const showGame = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + gameStore.game.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const indexGame = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games', //[?over=false]',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // placeholder for // GET /games/:id/watch games#watch
-//
-// const index = function () {
+// const watchGame = function () {
 //   return $.ajax({
-//     url: config.apiOrigin + '/games',
-//     method: 'GET'
-//   })
-// }
-//
-// const show = function (id) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/games/' + id,
-//     method: 'GET'
+//     url: config.apiOrigin + '/games/' + gameStore.game.id + '/watch',
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
 //   })
 // }
 
 module.exports = {
   create,
-  updateGameState
+  updateGameState,
+  showGame,
+  indexGame
+  // ,watchGame
 }

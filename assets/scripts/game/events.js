@@ -139,18 +139,9 @@ const onClick = function (event) { // may not need 'event'
 }
 
 const addHandlers = () => {
-  // $('#1').one('click', onClick)
-  // $('#2').one('click', onClick)
-  // $('#3').one('click', onClick)
-  // $('#4').one('click', onClick)
-  // $('#5').one('click', onClick)
-  // $('#6').one('click', onClick)
-  // $('#7').one('click', onClick)
-  // $('#8').one('click', onClick)
-  // $('#9').one('click', onClick)
-  $('.game-update').one('click', onClick)
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
-  // $('.game-update').on('submit', onClick)
+  $('.game-update').one('click', onClick).on('click', gameApi.showGame).on('click', gameApi.indexGame)
+  // .on('click', gameApi.watchGame)
 }
 
 module.exports = {

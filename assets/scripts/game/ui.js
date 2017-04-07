@@ -1,7 +1,7 @@
 'use strict'
 
 const gameStore = require('../gameStore')
-const winCheck = require('../winCheck.js')
+// const winCheck = require('../winCheck')
 // new game setup
 const setup = require('../setup')
 
@@ -28,18 +28,18 @@ const playSuccess = (data) => {
 }
 
 const playFailure = (error) => {
-
+  console.error(error)
 }
 
-const sendSuccess = (data) => {
-  gameStore.game.play++
-  console.log(data)
-  gameStore.game.cells = data.game.cells
-  console.log('gameStore game cells', gameStore.game.cells)
-  win.winCheck(gameStore.game.cells)
-  console.log('array to check win against ', gameStore.game.cells)
-  console.log(win.winCheck(gameStore.game.cells))
-}
+// const sendSuccess = (data) => {
+//   gameStore.game.play++
+//   console.log(data)
+//   gameStore.game.cells = data.game.cells
+//   console.log('gameStore game cells', gameStore.game.cells)
+//   win.winCheck(gameStore.game.cells)
+//   console.log('array to check win against ', gameStore.game.cells)
+//   console.log(win.winCheck(gameStore.game.cells))
+// }
 
 const sendFailure = (error) => {
   console.error(error)
@@ -50,6 +50,6 @@ module.exports = {
   createGameFailure,
   playSuccess,
   playFailure,
-  sendSuccess,
+  // sendSuccess,
   sendFailure
 }

@@ -1,7 +1,8 @@
 'use strict'
 
 const reset = function () {
-  $('.game-update').css('background-color', '$background-color').text('')
+  $('.game-update').css('background-color', '#5e91fe').text('')
+  $('.image1').show('slow')
 }
 
 let playerX = {
