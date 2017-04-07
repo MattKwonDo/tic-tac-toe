@@ -11,13 +11,13 @@ const gameStore = require('../gameStore')
 const winCheck = require('../winCheck')
 // const bootstrap = require('bootstrap') // not sure if this is needed
 
-let playOrderArray = []
+const playOrderArray = []
 // let localData = {
 //   index: [],
 //   value: []
 // }
 
-const arrayValue = null
+let arrayValue = null
 
 // Below is create game and click functionality
 // create game
@@ -44,10 +44,10 @@ const onClick = function (event) { // may not need 'event'
     console.log('1')
     // keep track of the box id
     const index = parseInt($(this).attr('id'))
-    // keep track of the plays and set this as the next play if valid
-    setup.play += 1
     // gameStore.game.play += 1
     console.log('plays before this ', setup.play)
+    // keep track of the plays and set this as the next play if valid
+    setup.play += 1
     // updated display
     $(this).css('background-color', '#5e91fe')
     $(this).css('font-size', '50px')
@@ -56,9 +56,9 @@ const onClick = function (event) { // may not need 'event'
     // set value to be stored equal to player x or o
     const value = this.innerHTML
     // convert x or o to 1 or 0
-    if (this.innerHTML = 'x') {
+    if (this.innerHTML === 'x') {
       arrayValue = 1
-    } else if (this.innerHTML = 'o') {
+    } else if (this.innerHTML === 'o') {
       arrayValue = 0
     } else {
       console.log('not new click')
@@ -86,10 +86,12 @@ const onClick = function (event) { // may not need 'event'
     // log the play in the appropriate spot for server
     gameStore.game.cells[setup.play - 1] = value
     // log the value in the order of the click
-    playOrderArray.push(value)
+    playOrderArray.push(arrayValue)
+    console.log('play order' + playOrderArray)
     // localData.index.push(index - 1)
     // localData.value.push(value)
-    winCheck.grid[Math.floor((index) / 3)][index % 3] = arrayValue
+    setup.grid[Math.floor((index - 1) / 3)][(index - 1) % 3] = arrayValue
+    console.log('grid ' + setup.grid)
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -99,6 +101,9 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore player_x ', gameStore.game.player_x)
     // console.log('gameStore plays ', gameStore.game.play)
     console.log('setup plays', setup.play)
+    // call winCheck
+    winCheck.winCheck(setup.grid, setup.valArray)
+    // send data to server
     gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
     // .catch(gameUi.playFailure)
@@ -113,10 +118,10 @@ const onClick = function (event) { // may not need 'event'
     }
     // keep track of the box id
     const index = parseInt($(this).attr('id'))
-    // keep track of the plays and set this as the next play if valid
-    setup.play += 1
     // gameStore.game.play += 1
     console.log('plays before this ', setup.play)
+    // keep track of the plays and set this as the next play if valid
+    setup.play += 1
     console.log(2)
         // update display
     $(this).css('background-color', 'red')
@@ -124,6 +129,14 @@ const onClick = function (event) { // may not need 'event'
     // $(this).css('background-image', 'url')
     this.innerHTML = 'o'
     const value = this.innerHTML
+    // convert x or o to 1 or 0
+    if (this.innerHTML === 'x') {
+      arrayValue = 1
+    } else if (this.innerHTML === 'o') {
+      arrayValue = 0
+    } else {
+      console.log('not new click')
+    }
     const data = {
       'game': {
         'cell': {
@@ -147,9 +160,11 @@ const onClick = function (event) { // may not need 'event'
     gameStore.game.cells[setup.play - 1] = value
     // log the value in the order of the click
     playOrderArray.push(value)
+    console.log('play order' + playOrderArray)
     // localData.index.push(index - 1)
     // localData.value.push(value)
-    winCheck.grid[Math.floor((index) / 3)][index % 3] = arrayValue
+    setup.grid[Math.floor((index - 1) / 3)][(index - 1) % 3] = arrayValue
+    console.log('grid ' + setup.grid)
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -159,6 +174,9 @@ const onClick = function (event) { // may not need 'event'
     console.log('gameStore player_x ', gameStore.game.player_x)
     // console.log('gameStore plays ', gameStore.game.play)
     console.log('setup plays', setup.play)
+    // call winCheck
+    winCheck.winCheck(setup.grid, setup.valArray)
+    // send data to server
     gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
     // .catch(gameUi.playFailure)
@@ -169,6 +187,7 @@ const onClick = function (event) { // may not need 'event'
 const addHandlers = () => {
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
   $('.game-update').one('click', onClick).on('click', gameApi.showGame).on('click', gameApi.indexGame)
+  $('#myModal').modal('show')
   // .on('click', gameApi.watchGame)
 }
 

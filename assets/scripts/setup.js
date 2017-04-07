@@ -79,7 +79,12 @@ let games = [
 
 module.exports = {
   reset,
-  play,,
-  grid
-  currentGame
+  play,
+  grid,
+  valx,
+  valArray,
+  playerX,
+  playerO,
+  currentGame,
+  games
 }

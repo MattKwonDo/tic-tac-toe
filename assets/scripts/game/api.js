@@ -6,7 +6,7 @@
 // PATCH /games/:id games#update
 // GET /games/:id/watch games#watch
 
-const app = require('../app.js') // may not be needed
+// const app = require('../app.js') // may not be needed
 const config = require('../config') // why the url in this file over another one?
 const store = require('../store')
 const gameStore = require('../gameStore')
@@ -46,7 +46,7 @@ const showGame = function (id) {
 
 const indexGame = function () {
   return $.ajax({
-    url: config.apiOrigin + '/games', //[?over=false]',
+    url: config.apiOrigin + '/games/?over=true',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
