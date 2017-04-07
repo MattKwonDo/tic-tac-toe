@@ -5,13 +5,35 @@ const reset = function () {
   $('.image1').show('slow')
 }
 
+// define number of plays and playerTurn to keep track of who should be playing
+let play = 0
+
+// define grid to store game state
+let grid = [new Array(3),new Array(3),new Array(3)]
+
+// values for the game logic
+let valx = {
+  total: 0,
+  sumForwardDiagonal: 0,
+  sumBackwardDiagonal: 0,
+  sumCol0: 0,
+  sumCol1: 0,
+  sumCol2: 0,
+  sumRow0: 0,
+  sumRow1: 0,
+  sumRow2: 0
+}
+
+// array with values for game logic
+let valArray = new Array(8)
+
+// local store of game data
 let playerX = {
   id: 1,
   email: 'matt@m.com',
   games_won: 0,
   games_lost: 0,
   games_drawn: 0
-  // ,   game_history: [] // push id, outcome
 }
 let playerO = {
   id: 2,
@@ -19,7 +41,6 @@ let playerO = {
   games_won: 0,
   games_lost: 0,
   games_drawn: 0
-  // ,   game_history: [] // push id, outcome
 }
 let currentGame = {
   winner: '',
@@ -39,7 +60,7 @@ let currentGame = {
   }
 }
 
-// below is what needs to be sent to API
+// below is what needs to be sent to API, not currently used
 let games = [
   {
       id: 1,
@@ -56,38 +77,9 @@ let games = [
     }
 ]
 
-// define number of plays and playerTurn to keep track of who should be playing
-let play = 0
-let playerTurn = 'playerX'
-
-// define grid to store game state
-let grid = [new Array(3),new Array(3),new Array(3)]
-// function to check to see if someone has won and change game states and winner loser, drawer, and counts
-// combine all of the below functions into one function, reset total to 0 after each for loop
-// let overCheck = function {
-
-// values for the game logic
-let valx = {
-  total: 0,
-  sumForwardDiagonal: 0,
-  sumBackwardDiagonal: 0,
-  sumCol0: 0,
-  sumCol1: 0,
-  sumCol2: 0,
-  sumRow0: 0,
-  sumRow1: 0,
-  sumRow2: 0
-}
-
-// array with values for game logic
-let valArray = new Array(8)
-
-grid = [[0, 0, 1],
-        [1, 0, 1],
-        [0, 1, 1]]
-
 module.exports = {
   reset,
-  play,
+  play,,
+  grid
   currentGame
 }

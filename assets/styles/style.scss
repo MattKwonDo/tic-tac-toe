@@ -30,15 +30,13 @@ img {
 }
 
 .board {
-  margin: 0 auto;
   float: left;
+  margin: 0 auto;
   overflow: hidden;
 }
 
-.spaceRow {
+.col-xs-12 {
   height: 50px;
-  float: left;
-  clear: both;
 }
 
 // .board {
@@ -58,6 +56,11 @@ img {
   padding: auto;
   margin: 0 auto;
 }
+
+#game-create-new {
+  clear: both;
+}
+
 
 // html, body{
 //   height:100%;

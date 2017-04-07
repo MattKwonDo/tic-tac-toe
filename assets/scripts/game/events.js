@@ -11,6 +11,14 @@ const gameStore = require('../gameStore')
 const winCheck = require('../winCheck')
 // const bootstrap = require('bootstrap') // not sure if this is needed
 
+let playOrderArray = []
+// let localData = {
+//   index: [],
+//   value: []
+// }
+
+const arrayValue = null
+
 // Below is create game and click functionality
 // create game
 const onCreateGame = function (event) {
@@ -45,7 +53,17 @@ const onClick = function (event) { // may not need 'event'
     $(this).css('font-size', '50px')
     // this.innerHTML = 'x'
     $(this).text('x')
+    // set value to be stored equal to player x or o
     const value = this.innerHTML
+    // convert x or o to 1 or 0
+    if (this.innerHTML = 'x') {
+      arrayValue = 1
+    } else if (this.innerHTML = 'o') {
+      arrayValue = 0
+    } else {
+      console.log('not new click')
+    }
+
     const data = { // should this be a constructor function to have one for each play?
       'game': {
         'cell': {
@@ -65,8 +83,13 @@ const onClick = function (event) { // may not need 'event'
     // console.log('gameStore plays ', gameStore.game.play)
     console.log('setup plays', setup.play)
     console.log('clicked ' + value)
-    // log the play in the appropriate spot
+    // log the play in the appropriate spot for server
     gameStore.game.cells[setup.play - 1] = value
+    // log the value in the order of the click
+    playOrderArray.push(value)
+    // localData.index.push(index - 1)
+    // localData.value.push(value)
+    winCheck.grid[Math.floor((index) / 3)][index % 3] = arrayValue
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -120,8 +143,13 @@ const onClick = function (event) { // may not need 'event'
     // console.log('gameStore plays ', gameStore.game.play)
     console.log('setup plays', setup.play)
     console.log('clicked ' + value)
-    // log the play in the appropriate spot
+    // log the play in the appropriate spot for server
     gameStore.game.cells[setup.play - 1] = value
+    // log the value in the order of the click
+    playOrderArray.push(value)
+    // localData.index.push(index - 1)
+    // localData.value.push(value)
+    winCheck.grid[Math.floor((index) / 3)][index % 3] = arrayValue
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
