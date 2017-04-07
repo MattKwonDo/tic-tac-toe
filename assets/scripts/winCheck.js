@@ -140,10 +140,10 @@ let winCheck = function (array, valArray) {
       setup.playerX.games_won += 1
       setup.playerO.games_lost += 1
       console.log('game over, playerX won')
-      $('#wins').text(setup.playerX.games_won)
-      $('#draws').text(setup.playerX.games_drawn)
-      $('#losses').text(setup.playerX.games_lost)
-      $('#myModal').modal('show')
+      $('.wins').text(setup.playerX.games_won)
+      $('.draws').text(setup.playerX.games_drawn)
+      $('.losses').text(setup.playerX.games_lost)
+      $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
     } else if (setup.valArray[i] === 0) {
       // change local games status
       setup.currentGame.winner = 'playerO'
@@ -155,10 +155,10 @@ let winCheck = function (array, valArray) {
       // change what's passed to server over to true
       gameStore.game.over = true
       console.log('game over, playerO won')
-      $('#wins').text(setup.playerX.games_won)
-      $('#draws').text(setup.playerX.games_drawn)
-      $('#losses').text(setup.playerX.games_lost)
-      $('#myModal').modal('show')
+      $('.wins').text(setup.playerX.games_won)
+      $('.draws').text(setup.playerX.games_drawn)
+      $('.losses').text(setup.playerX.games_lost)
+      $('#myModal').modal('show').modal({backdrop: 'static', keyboard: false})
     } else {
       continue
     }
@@ -174,10 +174,10 @@ let winCheck = function (array, valArray) {
     // change what's passed to server over to true
     gameStore.game.over = true
     console.log("game over, it's a draw")
-    $('#wins').text(setup.playerX.games_won)
-    $('#draws').text(setup.playerX.games_drawn)
-    $('#losses').text(setup.playerX.games_lost)
-    $('#myModal').modal('show')
+    $('.wins').text(setup.playerX.games_won)
+    $('.draws').text(setup.playerX.games_drawn)
+    $('.losses').text(setup.playerX.games_lost)
+    $('#myModal').modal('show').modal({backdrop: 'static', keyboard: false})
   }
   console.log('winner = ', setup.currentGame.winner)
   console.log('winner = ', setup.currentGame.loser)

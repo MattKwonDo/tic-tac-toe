@@ -18,14 +18,25 @@
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
                   <h4 class="modal-title" id="myModalLabel">Sign up, Login, Sign Out, Change Password</h4>
                 </div>
                 <div class="modal-body">
+                  <div class="scoreRow">
+                    <div class="col-xs-4 box score-title" class="icon">wins</div>
+                    <div class="col-xs-4 box score-title" class="icon">draws</div>
+                    <div class="col-xs-4 box score-title" class="icon">losses</div>
+                  </div>
+
+                  <div class="scoreRow">
+                    <div class="col-xs-4 box score-update wins" id="wins" class="icon">0</div>
+                    <div class="col-xs-4 box score-update draws" id="draws" class="icon">0</div>
+                    <div class="col-xs-4 box score-update losses" id="losses" class="icon">0</div>
+                  </div>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" id="basic-addon1">@</span>
                     <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"> -->
@@ -94,9 +105,9 @@
       </div>
 
       <div class="scoreRow">
-        <div class="col-xs-4 box score-update" id="wins" class="icon">0</div>
-        <div class="col-xs-4 box score-update" id="draws" class="icon">0</div>
-        <div class="col-xs-4 box score-update" id="losses" class="icon">0</div>
+        <div class="col-xs-4 box score-update wins" id="wins" class="icon">0</div>
+        <div class="col-xs-4 box score-update draws" id="draws" class="icon">0</div>
+        <div class="col-xs-4 box score-update losses" id="losses" class="icon">0</div>
       </div>
 
       <div class="spaceRow">

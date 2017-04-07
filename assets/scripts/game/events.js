@@ -38,12 +38,14 @@ const onClick = function (event) { // may not need 'event'
     return
   }
   // gameUi.playSuccess()
+  // create data object
+  let data = {}
   console.log(2)
   if (setup.play % 2 === 0) {
     console.log('xxxxxxxxxx')
     console.log('1')
     // keep track of the box id
-    const index = parseInt($(this).attr('id'))
+    const index = parseInt($(this).attr('id')) - 1
     // gameStore.game.play += 1
     console.log('plays before this ', setup.play)
     // keep track of the plays and set this as the next play if valid
@@ -63,16 +65,6 @@ const onClick = function (event) { // may not need 'event'
     } else {
       console.log('not new click')
     }
-
-    const data = { // should this be a constructor function to have one for each play?
-      'game': {
-        'cell': {
-          'index': index,
-          'value': value
-        },
-        'over': false
-      }
-    }
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -90,9 +82,8 @@ const onClick = function (event) { // may not need 'event'
     console.log('play order' + playOrderArray)
     // localData.index.push(index - 1)
     // localData.value.push(value)
-    setup.grid[Math.floor((index - 1) / 3)][(index - 1) % 3] = arrayValue
+    setup.grid[Math.floor((index) / 3)][(index) % 3] = arrayValue
     console.log('grid ' + setup.grid)
-    console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
     console.log('gameStore id ', gameStore.game.id)
@@ -103,6 +94,17 @@ const onClick = function (event) { // may not need 'event'
     console.log('setup plays', setup.play)
     // call winCheck
     winCheck.winCheck(setup.grid, setup.valArray)
+    // set game status equal to the right data
+    data = { // should this be a constructor function to have one for each play?
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': gameStore.game.over
+      }
+    }
+    console.log('data to be sent: ', data)
     // send data to server
     gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
@@ -117,7 +119,7 @@ const onClick = function (event) { // may not need 'event'
       return
     }
     // keep track of the box id
-    const index = parseInt($(this).attr('id'))
+    const index = parseInt($(this).attr('id')) - 1
     // gameStore.game.play += 1
     console.log('plays before this ', setup.play)
     // keep track of the plays and set this as the next play if valid
@@ -137,15 +139,8 @@ const onClick = function (event) { // may not need 'event'
     } else {
       console.log('not new click')
     }
-    const data = {
-      'game': {
-        'cell': {
-          'index': index,
-          'value': value
-        },
-        'over': false
-      }
-    }
+    // create data object
+    let data = {}
     console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
@@ -163,9 +158,8 @@ const onClick = function (event) { // may not need 'event'
     console.log('play order' + playOrderArray)
     // localData.index.push(index - 1)
     // localData.value.push(value)
-    setup.grid[Math.floor((index - 1) / 3)][(index - 1) % 3] = arrayValue
+    setup.grid[Math.floor((index) / 3)][(index) % 3] = arrayValue
     console.log('grid ' + setup.grid)
-    console.log(data)
     console.log('gameStore game ', gameStore.game)
     console.log('gameStore cells ', gameStore.game.cells)
     console.log('gameStore id ', gameStore.game.id)
@@ -176,6 +170,17 @@ const onClick = function (event) { // may not need 'event'
     console.log('setup plays', setup.play)
     // call winCheck
     winCheck.winCheck(setup.grid, setup.valArray)
+    // set game status equal to the right data
+    data = { // should this be a constructor function to have one for each play?
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': gameStore.game.over
+      }
+    }
+    console.log('data to be sent: ', data)
     // send data to server
     gameApi.updateGameState(data)
     // .then(gameUi.playSuccess)
@@ -187,7 +192,7 @@ const onClick = function (event) { // may not need 'event'
 const addHandlers = () => {
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
   $('.game-update').one('click', onClick).on('click', gameApi.showGame).on('click', gameApi.indexGame)
-  $('#myModal').modal('show')
+  $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
   // .on('click', gameApi.watchGame)
 }
 
