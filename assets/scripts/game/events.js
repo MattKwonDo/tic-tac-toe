@@ -40,7 +40,7 @@ const onCreateGame = function (event) {
   console.log('3 ran!')
   // will want to reset board, reset handlers, load handlers
 }
-
+// get current game data
 const onGetStats = function (event) {
   event.preventDefault()
   console.log('1 ran!')
@@ -48,6 +48,36 @@ const onGetStats = function (event) {
   gameApi.showGame()
   .then(gameUi.showGameSuccess)
   .catch(gameUi.showGameFailure)
+    //
+    // gameApi.indexGame()
+    // .then(gameUi.indexGameSuccess)
+    // .catch(gameUi.indexGameFailure)
+  console.log('3 ran!')
+  // will want to reset board, reset handlers, load handlers
+}
+// get all game data
+const onGetStatsAll = function (event) {
+  event.preventDefault()
+  console.log('1 ran!')
+  // get data back from the server
+  gameApi.showAllGames()
+  .then(gameUi.showAllGameSuccess)
+  .catch(gameUi.showAllGameFailure)
+    //
+    // gameApi.indexGame()
+    // .then(gameUi.indexGameSuccess)
+    // .catch(gameUi.indexGameFailure)
+  console.log('3 ran!')
+  // will want to reset board, reset handlers, load handlers
+}
+// get complete games data
+const onGetStatsComplete = function (event) {
+  event.preventDefault()
+  console.log('1 ran!')
+  // get data back from the server
+  gameApi.indexGame()
+  .then(gameUi.indexGameSuccess)
+  .catch(gameUi.indexGameFailure)
     //
     // gameApi.indexGame()
     // .then(gameUi.indexGameSuccess)
@@ -234,18 +264,24 @@ const onClick = function (event) { // may not need 'event'
 }
 
 const addHandlers = () => {
+  $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
   $('.game-update').on('click', onClick)
   // move this into onClick? or onto own button
   $('.game-return').on('click', onGetStats)
-  // $('.game-return').on('click', gameApi.indexGame)
-  $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
-  // .on('click', gameApi.watchGame)
+  $('.game-return-all').on('click', onGetStatsAll)
+  $('.game-return-complete').on('click', onGetStatsComplete)
+    // $('.game-return-wins').on('click', onGetStatsWins)
+    // $('.game-return-draws').on('click', onGetStatsDraws)
+    // $('.game-return-losses').on('click', onGetStatsLosses)
+    // .on('click', gameApi.watchGame)
 }
 
 module.exports = {
   addHandlers,
   onCreateGame,
   onClick, //
-  onGetStats
+  onGetStats,
+  onGetStatsAll,
+  onGetStatsComplete
 }

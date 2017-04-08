@@ -44,13 +44,26 @@ const showGame = function (id) {
   })
 }
 
-const indexGame = function (id) {
+const showAllGames = function (ajaxResponseShowAll) {
   return $.ajax({
-    url: config.apiOrigin + '/games?over=true', //  + '/games/' + gameStore.game.id + '/' + '
+    url: config.apiOrigin + '/games',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data: ajaxResponseShowAll
+  })
+}
+
+const indexGame = function (ajaxResponseIndex) {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    // url: config.apiOrigin + '/games/' + gameStore.game.id + '/' + '?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: ajaxResponseIndex
   })
 }
 
@@ -69,6 +82,7 @@ module.exports = {
   create,
   updateGameState,
   showGame,
+  showAllGames,
   indexGame
   // ,watchGame
 }

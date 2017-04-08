@@ -24,7 +24,7 @@ const setup = require('../setup')
 // });
 
 const createGameSuccess = (ajaxResponseCreate) => {
-  console.log('create game success: ', ajaxResponseCreate)
+  console.log('ajaxResponseCreate game: ', ajaxResponseCreate)
   // reset local store of data
   setup.play = 0
   setup.grid = [new Array(3), new Array(3), new Array(3)]
@@ -78,7 +78,7 @@ const createGameFailure = (error) => {
 
 const playSuccess = (ajaxResponsePlay) => {
   // const engine = require('./engine.js')
-  console.log('ajaxResponse: ', ajaxResponsePlay)
+  console.log('ajaxResponsePlay: ', ajaxResponsePlay)
 }
 
 const playFailure = (error) => {
@@ -86,15 +86,23 @@ const playFailure = (error) => {
 }
 
 const showGameSuccess = (ajaxResponseShow) => {
-  console.log('ajaxResponse: ', ajaxResponseShow)
+  console.log('ajaxResponseShow: ', ajaxResponseShow)
 }
 
 const showGameFailure = (error) => {
   console.error(error)
 }
 
+const showAllGamesSuccess = (ajaxResponseShowAll) => {
+  console.log('ajaxResponseShowAll: ', ajaxResponseShowAll)
+}
+
+const showAllGamesFailure = (error) => {
+  console.error(error)
+}
+
 const indexGameSuccess = (ajaxResponseIndex) => {
-  console.log('ajaxResponse: ', ajaxResponseIndex)
+  console.log('ajaxResponseIndex: ', ajaxResponseIndex)
 }
 
 const indexGameFailure = (error) => {
@@ -124,6 +132,8 @@ module.exports = {
   sendFailure,
   showGameSuccess,
   showGameFailure,
+  showAllGamesSuccess,
+  showAllGamesFailure,
   indexGameSuccess,
   indexGameFailure
 }
