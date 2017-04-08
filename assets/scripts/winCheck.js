@@ -143,6 +143,7 @@ let winCheck = function (array, valArray) {
       $('.wins').text(setup.playerX.games_won)
       $('.draws').text(setup.playerX.games_drawn)
       $('.losses').text(setup.playerX.games_lost)
+      // $('.game-update').off('click')
       $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
     } else if (setup.valArray[i] === 0) {
       // change local games status
@@ -158,6 +159,7 @@ let winCheck = function (array, valArray) {
       $('.wins').text(setup.playerX.games_won)
       $('.draws').text(setup.playerX.games_drawn)
       $('.losses').text(setup.playerX.games_lost)
+      // $('.game-update').off('click')
       $('#myModal').modal('show').modal({backdrop: 'static', keyboard: false})
     } else {
       continue
@@ -177,8 +179,10 @@ let winCheck = function (array, valArray) {
     $('.wins').text(setup.playerX.games_won)
     $('.draws').text(setup.playerX.games_drawn)
     $('.losses').text(setup.playerX.games_lost)
+    // $('.game-update').off('click')
     $('#myModal').modal('show').modal({backdrop: 'static', keyboard: false})
   }
+
   console.log('winner = ', setup.currentGame.winner)
   console.log('winner = ', setup.currentGame.loser)
   console.log('game over = ', setup.currentGame.over)

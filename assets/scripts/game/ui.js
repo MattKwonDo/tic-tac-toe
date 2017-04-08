@@ -5,11 +5,71 @@ const gameStore = require('../gameStore')
 // new game setup
 const setup = require('../setup')
 
+// // reset board function. Resets clicks on board and resets variables.
+// function resetBoard() {
+//     $gameCells.removeClass('won');
+//     $gameCells.html('');
+//     winner = 'null';
+//     moves = ["", "", "", "", "", "", "", "", ""];
+//     turn = 'X';
+//     count = 0;
+// }
+//
+// // Button for new game. Clears board and let's player play new game.
+// $('#newGame').click(function() {
+//     $(this).on();
+//     resetBoard();
+//     startGame();
+//     console.log(moves, turn, count);
+// });
+
 const createGameSuccess = (ajaxResponse) => {
-  console.log('sign in success: ', ajaxResponse)
-  gameStore.game = ajaxResponse.game
-  // gameStore.game.play = 0
+  console.log('create game success: ', ajaxResponse)
+  // reset game board and local store of data
+  // $('.game-update').unbind('click')
+  // $('.game-update').on()
+  $('.game-update').css('background-color', '#5e91fe')
+  $('.game-update').text('')
+  $('.image1').show()
+  // $('.game-update').on()
+  $('.game-update').on('click')
   setup.play = 0
+  setup.grid = [new Array(3), new Array(3), new Array(3)]
+    // values for the game logic
+  setup.valx = {
+    total: 0,
+    sumForwardDiagonal: 0,
+    sumBackwardDiagonal: 0,
+    sumCol0: 0,
+    sumCol1: 0,
+    sumCol2: 0,
+    sumRow0: 0,
+    sumRow1: 0,
+    sumRow2: 0
+  }
+    // array with values for game logic
+  setup.valArray = new Array(8)
+
+  // setup.currentGame = {
+  //   winner: '',
+  //   loser: '',
+  //   drawer: '',
+  //   // only send below to API
+  //   id: 1,
+  //   cells: [], // should this be a 9 by 2 or 9 by 1 or 9 by 3
+  //   over: false,
+  //   player_x: {
+  //     id: playerX.id,
+  //     email: playerX.email
+  //   },
+  //   player_o: {
+  //     id: playerO.id,
+  //     email: playerO.email
+  //   }
+  // }
+  //
+  // store new game data
+  gameStore.game = ajaxResponse.game
   console.log('gameStore game ', gameStore.game)
   console.log('gameStore cells ', gameStore.game.cells)
   console.log('gameStore id ', gameStore.game.id)
@@ -23,8 +83,9 @@ const createGameFailure = (error) => {
   console.error('sign in error is: ', error)
 }
 
-const playSuccess = (data) => {
-
+const playSuccess = (ajaxResponse) => {
+  // const engine = require('./engine.js')
+  console.log('ajaxResponse: ', ajaxResponse)
 }
 
 const playFailure = (error) => {

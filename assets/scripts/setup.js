@@ -9,7 +9,7 @@ const reset = function () {
 let play = 0
 
 // define grid to store game state
-let grid = [new Array(3),new Array(3),new Array(3)]
+let grid = [new Array(3), new Array(3), new Array(3)]
 
 // values for the game logic
 let valx = {

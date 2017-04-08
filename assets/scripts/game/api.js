@@ -44,9 +44,9 @@ const showGame = function (id) {
   })
 }
 
-const indexGame = function () {
+const indexGame = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/games/?over=true',
+    url: config.apiOrigin + '/games?over=true', //  + '/games/' + gameStore.game.id + '/' + '
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

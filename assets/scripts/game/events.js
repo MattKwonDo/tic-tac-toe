@@ -24,6 +24,11 @@ let arrayValue = null
 const onCreateGame = function (event) {
   event.preventDefault()
   console.log('1 ran!')
+  $('.game-update').css('background-color', '#5e91fe')
+  $('.game-update').text('')
+  $('.image1').show()
+  // $('.game-update').on()
+  $('.game-update').on('click')
   gameApi.create()
     .then(gameUi.createGameSuccess)
     .catch(gameUi.createGameFailure)
@@ -31,12 +36,24 @@ const onCreateGame = function (event) {
   // will want to reset board, reset handlers, load handlers
 }
 
+// const onGetStats = function (event) {
+//   event.preventDefault()
+//   console.log('1 ran!')
+//   gameApi.create()
+//     .then(gameUi.createGameSuccess)
+//     .catch(gameUi.createGameFailure)
+//   console.log('3 ran!')
+//   // will want to reset board, reset handlers, load handlers
+// }
+
 const onClick = function (event) { // may not need 'event'
   // only allow a play if the box hasn't been clicked
   if (this.innerHTML === 'x' | this.innerHTML === 'o' | $(this).text === 'x' | $(this).text === 'o') {
     console.log('this box cannot be clicked again')
     return
   }
+  // turn off click handler
+  $(this).off('click')
   // gameUi.playSuccess()
   // create data object
   let data = {}
@@ -107,8 +124,8 @@ const onClick = function (event) { // may not need 'event'
     console.log('data to be sent: ', data)
     // send data to server
     gameApi.updateGameState(data)
-    // .then(gameUi.playSuccess)
-    // .catch(gameUi.playFailure)
+    .then(gameUi.playSuccess)
+    .catch(gameUi.playFailure)
 // if player not x, then:
   } else {
     console.log('ooooooooo')
@@ -183,15 +200,26 @@ const onClick = function (event) { // may not need 'event'
     console.log('data to be sent: ', data)
     // send data to server
     gameApi.updateGameState(data)
-    // .then(gameUi.playSuccess)
-    // .catch(gameUi.playFailure)
+    .then(gameUi.playSuccess)
+    .catch(gameUi.playFailure)
+// get data back from the server
+    // gameApi.showGame()
+    // .then(gameUi.showGameSuccess)
+    // .catch(gameUi.showGameFailure)
+    //
+    // gameApi.indexGame()
+    // .then(gameUi.indexGameSuccess)
+    // .catch(gameUi.indexGameFailure)
   }
   $(this).off('click')
 }
 
 const addHandlers = () => {
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
-  $('.game-update').one('click', onClick).on('click', gameApi.showGame).on('click', gameApi.indexGame)
+  $('.game-update').one('click', onClick)
+  // move this into onClick
+  // $('.game-update').one('click', gameApi.showGame)
+  // $('.game-return').one('click', gameApi.indexGame)
   $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
   // .on('click', gameApi.watchGame)
 }
@@ -199,5 +227,5 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   onCreateGame,
-  onClick
+  onClick // onGetStats
 }
