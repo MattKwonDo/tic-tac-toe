@@ -184,7 +184,7 @@ let winCheck = function (array, valArray) {
   }
 
   console.log('winner = ', setup.currentGame.winner)
-  console.log('winner = ', setup.currentGame.loser)
+  console.log('loser = ', setup.currentGame.loser)
   console.log('game over = ', setup.currentGame.over)
   console.log('setup.playerX.games_won = ', setup.playerX.games_won)
   console.log('setup.playerX.games_lost = ', setup.playerX.games_lost)

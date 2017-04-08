@@ -24,11 +24,13 @@ let arrayValue = null
 const onCreateGame = function (event) {
   event.preventDefault()
   console.log('1 ran!')
-  $('.game-update').css('background-color', '#5e91fe')
+  // // $('.game-update').on()
+  $('.game-update').empty()
+  $('.game-update').css('background-color', '#ffd700')
   $('.game-update').text('')
-  $('.image1').show()
-  // $('.game-update').on()
+  // $('.image1').show()
   $('.game-update').on('click')
+  $('#img1').show()
   gameApi.create()
     .then(gameUi.createGameSuccess)
     .catch(gameUi.createGameFailure)
@@ -36,15 +38,20 @@ const onCreateGame = function (event) {
   // will want to reset board, reset handlers, load handlers
 }
 
-// const onGetStats = function (event) {
-//   event.preventDefault()
-//   console.log('1 ran!')
-//   gameApi.create()
-//     .then(gameUi.createGameSuccess)
-//     .catch(gameUi.createGameFailure)
-//   console.log('3 ran!')
-//   // will want to reset board, reset handlers, load handlers
-// }
+const onGetStats = function (event) {
+  event.preventDefault()
+  console.log('1 ran!')
+  // get data back from the server
+  gameApi.showGame()
+  .then(gameUi.showGameSuccess)
+  .catch(gameUi.showGameFailure)
+    //
+    // gameApi.indexGame()
+    // .then(gameUi.indexGameSuccess)
+    // .catch(gameUi.indexGameFailure)
+  console.log('3 ran!')
+  // will want to reset board, reset handlers, load handlers
+}
 
 const onClick = function (event) { // may not need 'event'
   // only allow a play if the box hasn't been clicked
@@ -53,7 +60,7 @@ const onClick = function (event) { // may not need 'event'
     return
   }
   // turn off click handler
-  $(this).off('click')
+  // $(this).off('click')
   // gameUi.playSuccess()
   // create data object
   let data = {}
@@ -67,11 +74,11 @@ const onClick = function (event) { // may not need 'event'
     console.log('plays before this ', setup.play)
     // keep track of the plays and set this as the next play if valid
     setup.play += 1
-    // updated display
+    // update display
     $(this).css('background-color', '#5e91fe')
     $(this).css('font-size', '50px')
-    // this.innerHTML = 'x'
-    $(this).text('x')
+    this.innerHTML = 'x'
+    // $(this).text('x')
     // set value to be stored equal to player x or o
     const value = this.innerHTML
     // convert x or o to 1 or 0
@@ -126,6 +133,15 @@ const onClick = function (event) { // may not need 'event'
     gameApi.updateGameState(data)
     .then(gameUi.playSuccess)
     .catch(gameUi.playFailure)
+  // get data back from the server
+    // gameApi.showGame()
+    // .then(gameUi.showGameSuccess)
+    // .catch(gameUi.showGameFailure)
+    //
+    // gameApi.indexGame()
+    // .then(gameUi.indexGameSuccess)
+    // .catch(gameUi.indexGameFailure)
+
 // if player not x, then:
   } else {
     console.log('ooooooooo')
@@ -142,11 +158,12 @@ const onClick = function (event) { // may not need 'event'
     // keep track of the plays and set this as the next play if valid
     setup.play += 1
     console.log(2)
-        // update display
+    // update display
     $(this).css('background-color', 'red')
     $(this).css('font-size', '50px')
     // $(this).css('background-image', 'url')
     this.innerHTML = 'o'
+    // $(this).text('o')
     const value = this.innerHTML
     // convert x or o to 1 or 0
     if (this.innerHTML === 'x') {
@@ -211,15 +228,14 @@ const onClick = function (event) { // may not need 'event'
     // .then(gameUi.indexGameSuccess)
     // .catch(gameUi.indexGameFailure)
   }
-  $(this).off('click')
 }
 
 const addHandlers = () => {
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
-  $('.game-update').one('click', onClick)
-  // move this into onClick
-  // $('.game-update').one('click', gameApi.showGame)
-  // $('.game-return').one('click', gameApi.indexGame)
+  $('.game-update').on('click', onClick)
+  // move this into onClick? or onto own button
+  $('.game-return').on('click', onGetStats)
+  // $('.game-return').on('click', gameApi.indexGame)
   $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
   // .on('click', gameApi.watchGame)
 }
@@ -227,5 +243,6 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   onCreateGame,
-  onClick // onGetStats
+  onClick, //
+  onGetStats
 }

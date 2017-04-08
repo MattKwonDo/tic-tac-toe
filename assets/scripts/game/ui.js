@@ -23,16 +23,24 @@ const setup = require('../setup')
 //     console.log(moves, turn, count);
 // });
 
-const createGameSuccess = (ajaxResponse) => {
-  console.log('create game success: ', ajaxResponse)
+const createGameSuccess = (ajaxResponseCreate) => {
+  console.log('create game success: ', ajaxResponseCreate)
   // reset game board and local store of data
+  // // $('.game-update').on()
+  // $('.game-update').empty()
+  // $('.game-update').css('background-color', '$box-background-color')
+  // $('.game-update').text('')
+  // // $('.image1').show()
+  // $('.game-update').on('click')
+  // $('.image1').show()
+
   // $('.game-update').unbind('click')
   // $('.game-update').on()
-  $('.game-update').css('background-color', '#5e91fe')
-  $('.game-update').text('')
-  $('.image1').show()
-  // $('.game-update').on()
-  $('.game-update').on('click')
+  // $('.game-update').css('background-color', $box-background-color)
+  // $('.game-update').text('')
+  // $('.image1').show()
+  // // $('.game-update').on()
+  // $('.game-update').on('click')
   setup.play = 0
   setup.grid = [new Array(3), new Array(3), new Array(3)]
     // values for the game logic
@@ -69,7 +77,7 @@ const createGameSuccess = (ajaxResponse) => {
   // }
   //
   // store new game data
-  gameStore.game = ajaxResponse.game
+  gameStore.game = ajaxResponseCreate.game
   console.log('gameStore game ', gameStore.game)
   console.log('gameStore cells ', gameStore.game.cells)
   console.log('gameStore id ', gameStore.game.id)
@@ -83,12 +91,28 @@ const createGameFailure = (error) => {
   console.error('sign in error is: ', error)
 }
 
-const playSuccess = (ajaxResponse) => {
+const playSuccess = (ajaxResponsePlay) => {
   // const engine = require('./engine.js')
-  console.log('ajaxResponse: ', ajaxResponse)
+  console.log('ajaxResponse: ', ajaxResponsePlay)
 }
 
 const playFailure = (error) => {
+  console.error(error)
+}
+
+const showGameSuccess = (ajaxResponseShow) => {
+  console.log('ajaxResponse: ', ajaxResponseShow)
+}
+
+const showGameFailure = (error) => {
+  console.error(error)
+}
+
+const indexGameSuccess = (ajaxResponseIndex) => {
+  console.log('ajaxResponse: ', ajaxResponseIndex)
+}
+
+const indexGameFailure = (error) => {
   console.error(error)
 }
 
@@ -112,5 +136,9 @@ module.exports = {
   playSuccess,
   playFailure,
   // sendSuccess,
-  sendFailure
+  sendFailure,
+  showGameSuccess,
+  showGameFailure,
+  indexGameSuccess,
+  indexGameFailure
 }
