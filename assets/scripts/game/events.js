@@ -24,13 +24,16 @@ let arrayValue = null
 const onCreateGame = function (event) {
   event.preventDefault()
   console.log('1 ran!')
-  // // $('.game-update').on()
+  // reset game board
   $('.game-update').empty()
-  $('.game-update').css('background-color', '#ffd700')
   $('.game-update').text('')
-  // $('.image1').show()
   $('.game-update').on('click')
-  $('#img1').show()
+  $('.game-update').css('background-color', '#ffd700')
+  $('.game-update').html(
+    $('<img />', {src: 'images/questionBlock64.png' //, 'class': 'fullImage'
+    })
+  ).show()
+  // $('#img1').show()
   gameApi.create()
     .then(gameUi.createGameSuccess)
     .catch(gameUi.createGameFailure)

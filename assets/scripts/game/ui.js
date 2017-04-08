@@ -25,22 +25,7 @@ const setup = require('../setup')
 
 const createGameSuccess = (ajaxResponseCreate) => {
   console.log('create game success: ', ajaxResponseCreate)
-  // reset game board and local store of data
-  // // $('.game-update').on()
-  // $('.game-update').empty()
-  // $('.game-update').css('background-color', '$box-background-color')
-  // $('.game-update').text('')
-  // // $('.image1').show()
-  // $('.game-update').on('click')
-  // $('.image1').show()
-
-  // $('.game-update').unbind('click')
-  // $('.game-update').on()
-  // $('.game-update').css('background-color', $box-background-color)
-  // $('.game-update').text('')
-  // $('.image1').show()
-  // // $('.game-update').on()
-  // $('.game-update').on('click')
+  // reset local store of data
   setup.play = 0
   setup.grid = [new Array(3), new Array(3), new Array(3)]
     // values for the game logic
