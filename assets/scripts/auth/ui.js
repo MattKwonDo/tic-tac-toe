@@ -1,8 +1,10 @@
 'use strict'
 
 const store = require('../store')
+let refData = ''
 
 const signUpSuccess = (data) => {
+  refData = data
   console.log(data)
 }
 const signUpFailure = (error) => {
@@ -42,5 +44,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  refData
 }

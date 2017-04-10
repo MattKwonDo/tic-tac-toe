@@ -10,6 +10,7 @@ const gameStore = require('../gameStore')
 // game logic
 const winCheck = require('../winCheck')
 // const bootstrap = require('bootstrap') // not sure if this is needed
+const refData = require('../auth/ui')
 
 const playOrderArray = []
 // let localData = {
@@ -22,6 +23,9 @@ let arrayValue = null
 // Below is create game and click functionality
 // create game
 const onCreateGame = function (event) {
+  if (refData.refData === '') {
+    return
+  } else {
   event.preventDefault()
   console.log('1 ran!')
   // reset game board
@@ -39,6 +43,7 @@ const onCreateGame = function (event) {
     .catch(gameUi.createGameFailure)
   console.log('3 ran!')
   // will want to reset board, reset handlers, load handlers
+  }
 }
 // get current game data
 const onGetStats = function (event) {

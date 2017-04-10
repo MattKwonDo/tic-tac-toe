@@ -48,9 +48,9 @@ const showAllGames = function (ajaxResponseShowAll) {
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // },
     data: ajaxResponseShowAll
   })
 }
