@@ -4,6 +4,11 @@ const gameStore = require('../gameStore')
 // const winCheck = require('../winCheck')
 // new game setup
 const setup = require('../setup')
+const gameHistory = require('../gameHistory')
+const ajaxReturn = require('./ajaxReturn')
+
+let games = ''
+let gamesPlayed = ''
 
 // // reset board function. Resets clicks on board and resets variables.
 // function resetBoard() {
@@ -112,16 +117,31 @@ const showGameFailure = (error) => {
   console.error(error)
 }
 
-const showAllGamesSuccess = (ajaxResponseShowAll) => {
-  console.log('ajaxResponseShowAll: ', ajaxResponseShowAll)
+const showAllGameSuccess = (ajaxResponseShowAll) => {
+  console.log('3 ran!, now to pull winners')
+  console.log('ajaxResponseShowAll: ', ajaxResponseShowAll.games)
+  gameHistory.games = ajaxResponseShowAll.games
+  gamesPlayed = gameHistory.games.length - 1
+  console.log('total games played: ', gamesPlayed)
+  $('#games').text(gamesPlayed)
+  // run function
+  console.log('games: ', games)
+  games = gameHistory.games.map(function (ajaxResponseShowAll) { return ajaxResponseShowAll.cells })
+  console.log('games: ', games)
+  ajaxReturn.games(ajaxResponseShowAll)
+  // console.log('ajaxReturn.games: ', ajaxReturn.games)
+  // .then(ajaxReturn.totalWins(ajaxResponseShowAll))
+
+  // .catch(console.log('did not get games list'))
 }
 
-const showAllGamesFailure = (error) => {
+const showAllGameFailure = (error) => {
   console.error(error)
 }
 
 const indexGameSuccess = (ajaxResponseIndex) => {
   console.log('ajaxResponseIndex: ', ajaxResponseIndex)
+  // gameHistory.games = ajaxResponseIndex.games
 }
 
 const indexGameFailure = (error) => {
@@ -151,8 +171,10 @@ module.exports = {
   sendFailure,
   showGameSuccess,
   showGameFailure,
-  showAllGamesSuccess,
-  showAllGamesFailure,
+  showAllGameSuccess,
+  showAllGameFailure,
   indexGameSuccess,
-  indexGameFailure
+  indexGameFailure,
+  games,
+  gamesPlayed
 }

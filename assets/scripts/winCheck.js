@@ -8,6 +8,8 @@ const setup = require('./setup')
 // game id data
 const gameStore = require('./gameStore')
 
+const authUi = require('./auth/ui')
+
 // test temporary grid
 // grid = [[0, 0, 1],
 //         [1, 1, 0],
@@ -140,6 +142,8 @@ let winCheck = function (array, valArray) {
       setup.playerX.games_won += 1
       setup.playerO.games_lost += 1
       console.log('game over, playerX won')
+      authUi.gamesPlayed += 1
+      $('#games').text('') // authUi.gamesPlayed
       $('.wins').text(setup.playerX.games_won)
       $('.draws').text(setup.playerX.games_drawn)
       $('.losses').text(setup.playerX.games_lost)
@@ -156,6 +160,8 @@ let winCheck = function (array, valArray) {
       // change what's passed to server over to true
       gameStore.game.over = true
       console.log('game over, playerO won')
+      authUi.gamesPlayed += 1
+      $('#games').text('') // authUi.gamesPlayed
       $('.wins').text(setup.playerX.games_won)
       $('.draws').text(setup.playerX.games_drawn)
       $('.losses').text(setup.playerX.games_lost)
@@ -176,6 +182,8 @@ let winCheck = function (array, valArray) {
     // change what's passed to server over to true
     gameStore.game.over = true
     console.log("game over, it's a draw")
+    authUi.gamesPlayed += 1
+    $('#games').text('') // authUi.gamesPlayed
     $('.wins').text(setup.playerX.games_won)
     $('.draws').text(setup.playerX.games_drawn)
     $('.losses').text(setup.playerX.games_lost)

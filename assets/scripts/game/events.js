@@ -12,6 +12,8 @@ const winCheck = require('../winCheck')
 // const bootstrap = require('bootstrap') // not sure if this is needed
 const refData = require('../auth/ui')
 
+const gameHistory = require('../gameHistory')
+
 const playOrderArray = []
 // let localData = {
 //   index: [],
@@ -73,8 +75,10 @@ const onGetStatsAll = function (event) {
     // gameApi.indexGame()
     // .then(gameUi.indexGameSuccess)
     // .catch(gameUi.indexGameFailure)
-  console.log('3 ran!')
+
   // will want to reset board, reset handlers, load handlers
+  // console.log('games: ', gameHistory.games.length)
+  // ajaxReturn.dddd
 }
 // get complete games data
 const onGetStatsComplete = function (event) {
@@ -274,12 +278,12 @@ const addHandlers = () => {
   $('#change-password').hide()
   $('#game-create').hide()
   $('#sign-out').hide()
-  $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
+  $('.game-create').on('click', onCreateGame).on('click', onGetStatsAll)// .on('click', setup.reset)
   $('.game-update').on('click', onClick)
   // move this into onClick? or onto own button
-  $('.game-return').on('click', onGetStats)
-  $('.game-return-all').on('click', onGetStatsAll)
-  $('.game-return-complete').on('click', onGetStatsComplete)
+  $('#game-return').on('click', onGetStats)
+  $('#game-return-all').on('click', onGetStatsAll)
+  $('#game-return-complete').on('click', onGetStatsComplete)
     // $('.game-return-wins').on('click', onGetStatsWins)
     // $('.game-return-draws').on('click', onGetStatsDraws)
     // $('.game-return-losses').on('click', onGetStatsLosses)

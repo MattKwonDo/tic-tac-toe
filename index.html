@@ -11,7 +11,7 @@
     <body class="container-fluid">
       <div class="row">
         <div class="col-xs-12">
-          <h2>Sign Up or Login!</h2>
+          <h2>TIC TAC TOE</h2>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
             Sign up, Login, Sign Out, Change Password
@@ -27,15 +27,18 @@
                 </div>
                 <div class="modal-body">
                   <div class="scoreRow">
-                    <div class="col-xs-4 box score-title" >wins</div>
-                    <div class="col-xs-4 box score-title" >draws</div>
-                    <div class="col-xs-4 box score-title" >losses</div>
+                    <div class="col-xs-4 box score-title" >current wins</div>
+                    <div class="col-xs-4 box score-title" >current draws</div>
+                    <div class="col-xs-4 box score-title" >current losses</div>
                   </div>
 
                   <div class="scoreRow">
                     <div class="col-xs-4 box score-update wins" id="wins0" > </div>
                     <div class="col-xs-4 box score-update draws" id="draws0" > </div>
                     <div class="col-xs-4 box score-update losses" id="losses0" > </div>
+                    <div class="col-xs-4 box score-update total-wins" id="total-wins0" > </div>
+                    <div class="col-xs-4 box score-update total-draws" id="total-draws0" > </div>
+                    <div class="col-xs-4 box score-update total-losses" id="total-losses0" > </div>
                   </div>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" id="basic-addon1">@</span>
@@ -98,13 +101,14 @@
       <h1>TIC TAC TOE</h1>
 
       <div class="spaceRow">
-        <div class="col-xs-12 box" id="spacer1"></div>
+        <div class="col-xs-12 box score-total-title" id="spacer1">total games</div>
+        <div class="col-xs-12 box score-update games" id="games" >0</div>
       </div>
 
       <div class="scoreRow">
-        <div class="col-xs-4 box score-title" >wins</div>
-        <div class="col-xs-4 box score-title" >draws</div>
-        <div class="col-xs-4 box score-title" >losses</div>
+        <div class="col-xs-4 box score-title" >current wins</div>
+        <div class="col-xs-4 box score-title" >current draws</div>
+        <div class="col-xs-4 box score-title" >current losses</div>
       </div>
 
       <div class="scoreRow">
@@ -145,20 +149,20 @@
       </div>
     </div>
 
-    <div class="spaceRow">
+    <!-- <div class="spaceRow">
       <div class="col-xs-12 box" id="spacer5"></div>
       <div class="col-xs-12 box" id="spacer6">
           <button type="button" class="btn btn-primary btn-lg game-return" id='game-return' >Return Current Game Stats!</button>
       </div>
-    </div>
+    </div> -->
 
-        <div class="spaceRow">
+        <!-- <div class="spaceRow">
           <div class="col-xs-12 box" ></div>
           <div class="col-xs-12 box" >
               <button type="button" class="btn btn-primary btn-lg game-return" id='game-return-all' >Return All Game Stats!</button>
           </div>
-        </div>
-
+        </div> -->
+<!--
     <div class="spaceRow">
       <div class="col-xs-12 box" ></div>
       <div class="col-xs-12 box" >
@@ -185,7 +189,7 @@
       <div class="col-xs-12 box" >
           <button type="button" class="btn btn-primary btn-lg game-return" id='game-return-losses' >Return Lost Game Stats!</button>
       </div>
-    </div>
+    </div> -->
 
         <!-- <div class="base">
           <div class="col-xs-3 box"><img src="http://www.mariomayhem.com/fun/smb_level_editor/images/overworld_bg.png"/></div>
