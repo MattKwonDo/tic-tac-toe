@@ -40,7 +40,7 @@ const signInFailure = (error) => {
   // $('#sign-in').append('<p> "that didnt work" </p>')
   $('.errors-sign-in').text('Uh uh uh, you didnt say the magic word')
   $('#errors-sign-in-image').html(
-    $('<img />', {src: '../../../images/error-image.gif' //, 'class': 'fullImage'
+    $('<img />', {src: 'tic-tac-toe/images/error-image.gif' //, 'class': 'fullImage'
     })
   ).show()
   $('#sign-in-box').text('god dang')
@@ -59,7 +59,7 @@ const signOutSuccess = () => {
   $('.game-update').on('click')
   $('.game-update').css('background-color', '#ffd700')
   $('.game-update').html(
-    $('<img />', {src: './images/questionBlock64.png' //, 'class': 'fullImage'
+    $('<img />', {src: 'tic-tac-toe/images/questionBlock64.png' //, 'class': 'fullImage'
     })
   ).show()
   $('#sign-up').show()

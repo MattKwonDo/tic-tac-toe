@@ -34,7 +34,7 @@ const onCreateGame = function (event) {
   $('.game-update').on('click')
   $('.game-update').css('background-color', '#ffd700')
   $('.game-update').html(
-    $('<img />', {src: '../../../../images/questionBlock64.png' //, 'class': 'fullImage'
+    $('<img />', {src: 'tic-tac-toe/images/questionBlock64.png' //, 'class': 'fullImage'
     })
   ).show()
   // $('#img1').show()
