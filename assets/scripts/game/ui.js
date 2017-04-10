@@ -92,7 +92,7 @@ const showGameFailure = () => {
 
 const showAllGameSuccess = (ajaxResponseShowAll) => {
   gameHistory.games = ajaxResponseShowAll.games
-  gamesPlayed = gameHistory.games.length - 1
+  gamesPlayed = gameHistory.games.length
   $('#games').text(gamesPlayed)
   // run function
   games = gameHistory.games.map(function (ajaxResponseShowAll) { return ajaxResponseShowAll.cells })
