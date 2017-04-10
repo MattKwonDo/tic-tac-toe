@@ -23,9 +23,7 @@ let arrayValue = null
 // Below is create game and click functionality
 // create game
 const onCreateGame = function (event) {
-  if (refData.refData === '') {
-    return
-  } else {
+  if (refData.refData === 'x') {
   event.preventDefault()
   console.log('1 ran!')
   // reset game board
@@ -43,8 +41,11 @@ const onCreateGame = function (event) {
     .catch(gameUi.createGameFailure)
   console.log('3 ran!')
   // will want to reset board, reset handlers, load handlers
+  } else {
+    return
   }
 }
+
 // get current game data
 const onGetStats = function (event) {
   event.preventDefault()

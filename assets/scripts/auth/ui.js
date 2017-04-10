@@ -4,7 +4,7 @@ const store = require('../store')
 let refData = ''
 
 const signUpSuccess = (data) => {
-  refData = data
+  refData = 'x'
   console.log(data)
 }
 const signUpFailure = (error) => {
@@ -14,6 +14,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   console.log('sign in success: ', data)
   store.user = data.user
+  refData = 'x'
 }
 const signInFailure = (error) => {
   console.error('sign in error is: ', error)
@@ -23,6 +24,7 @@ const signOutSuccess = () => {
   console.log('sign onSignOut success')
   store.user = null
   console.log('store is null: ' + store.user)
+  refData = ''
 }
 const signOutFailure = (error) => {
   console.error('sign out error is: ', error)
