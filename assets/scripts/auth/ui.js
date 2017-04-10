@@ -33,11 +33,17 @@ const signInSuccess = (data) => {
   $('#sign-in').hide()
   // $('sign-in').append('<p> "" </p>')
   $('.errors-sign-in').text('')
+  $('#errors-sign-in-image').hide()
 }
 const signInFailure = (error) => {
   console.error('sign in error is: ', error)
   // $('#sign-in').append('<p> "that didnt work" </p>')
   $('.errors-sign-in').text('Uh uh uh, you didnt say the magic word')
+  $('#errors-sign-in-image').html(
+    $('<img />', {src: 'http://i.imgur.com/hLepfiT.gif' //, 'class': 'fullImage'
+    })
+  ).show()
+  $('#sign-in-box').text('god dang')
 }
 
 const signOutSuccess = () => {

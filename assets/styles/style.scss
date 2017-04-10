@@ -25,6 +25,11 @@ img {
   display:block;
 }
 
+#logInButton {
+  text-align: center;
+  width: 100px;
+}
+
 #myModal {
   color: $background-color;
 }
@@ -36,23 +41,15 @@ img {
 #spacer1 {
   text-align: center;
 }
-.board {
-  float: left;
-  margin: 0 auto;
-  overflow: hidden;
+
+.scoreRowBoard {
+  // height: 200px;
+  width: 200px;
 }
 
 .col-xs-12 {
   height: 50px;
 }
-
-// .board {
-//   height: 350px;
-//   margin: 0 auto;
-//   text-align: center;
-//   width: 350px;
-//   // float: left;
-// }
 
 .game-update {
   background-color: $box-background-color;
@@ -61,8 +58,20 @@ img {
   height: 68px;
   width: 68px;
   text-align: center;
-  padding: 0px;
+  padding: 0;
   margin: 0 auto;
+}
+
+#game-create-new {
+  clear: both;
+}
+
+.board {
+  float: left;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  // max-width: 350px;
 }
 
 // .container {
@@ -73,13 +82,4 @@ img {
 //   text-align: center;
 //   padding: 0px;
 //   margin: 0 auto;
-// }
-#game-create-new {
-  clear: both;
-}
-
-
-// html, body{
-//   height:100%;
-//   margin:0;
 // }
