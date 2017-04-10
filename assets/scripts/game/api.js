@@ -6,14 +6,12 @@
 // PATCH /games/:id games#update
 // GET /games/:id/watch games#watch
 
-// const app = require('../app.js') // may not be needed
 const config = require('../config') // why the url in this file over another one?
 const store = require('../store')
 const gameStore = require('../gameStore')
 
 // create a new game
 const create = function () {
-  console.log('2 ran!')
   return $.ajax({
     url: config.apiOrigin + '/games/',
     method: 'POST',

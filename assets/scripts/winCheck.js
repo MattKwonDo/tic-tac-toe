@@ -1,8 +1,6 @@
 'use strict'
 
 // links to other files
-// const gameApi = require('./api.js')
-// const gameUi = require('./ui.js')
 // new game setup
 const setup = require('./setup')
 // game id data
@@ -10,93 +8,7 @@ const gameStore = require('./gameStore')
 
 const authUi = require('./auth/ui')
 
-// test temporary grid
-// grid = [[0, 0, 1],
-//         [1, 1, 0],
-//         [0, 1, 1]]
-
-// temp gameStore for test
-// let  // this should be on setup for game reset functions
-// gameStoreTest = { // === gameStore.game
-//   id: 1,
-//   cells: ['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'], // should this be a 9 by 2 or 9 by 1 or 9 by 3
-//   over: false,
-//   player_x: {
-//     id: setup.playerX.id,
-//     email: setup.playerX.email
-//   },
-//   player_o: {
-//     id: setup.playerO.id,
-//     email: setup.playerO.email
-//   }
-// }
-
-// let  // this should be on setup for game reset functions
-// currentGameTest = { // === setup.currentGame
-//   winner: '',
-//   loser: '',
-//   drawer: '',
-//   // only send below to API
-//   id: 1,
-//   cells: ['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'], // should this be a 9 by 2 or 9 by 1 or 9 by 3
-//   over: false,
-//   player_x: {
-//     id: setup.playerX.id,
-//     email: setup.playerX.email
-//   },
-//   player_o: {
-//     id: setup.playerO.id,
-//     email: setup.playerO.email
-//   }
-// }
-
-// let  // this should be on setup for game reset functions
-// playerX = {
-//   id: 1,
-//   email: 'matt@m.com',
-//   games_won: 0,
-//   games_lost: 0,
-//   games_drawn: 0
-// }
-// // let // this should be on setup for game reset functions
-// playerO = {
-//   id: 2,
-//   email: 'fake@m.com',
-//   games_won: 0,
-//   games_lost: 0,
-//   games_drawn: 0
-// }
-// let
-// play = 8
-
-// game logic
-
-// just for test purposes, delete this eventually
-// console.log(winCheck(grid, valArray)) // just for test
-// grid = [[0,0,1],[,1,],[0,,1]] // just for test purposese, delete this eventually
-
 let winCheck = function (array, valArray) {
-  // log the coordinates
-  // need to figure this out - is this a pair like in boggle???
-  // add 1 to set the current play
-  // play += 1
-  // if this is the 4th play or lower, then exit as no one could win yet
-  // if (play < 5) {
-  //   // change the player to whose turn it is next
-  //   if (playerTurn === 'playerX') {
-  //     playerTurn = 'playerO'
-  //   } else {
-  //     playerTurn = 'playerX'
-  //   }
-  //   return
-  // }
-  // reset values
-
-  // update grid with new click
-  // for (let i = 0; i < play; i++) {
-  //   setup.grid.push()
-  // }
-
   // reset the winCheck values
   setup.valx.sumForwardDiagonal = 0
   setup.valx.sumBackwardDiagonal = 0
@@ -106,7 +18,6 @@ let winCheck = function (array, valArray) {
   setup.valx.sumRow0 = 0
   setup.valx.sumRow1 = 0
   setup.valx.sumRow2 = 0
-
   // playOrderArray[]
   // run through the rows/cols/diagonals and add up scores
   for (let i = 0; i < array.length; i++) {
@@ -141,7 +52,6 @@ let winCheck = function (array, valArray) {
       gameStore.game.over = true
       setup.playerX.games_won += 1
       setup.playerO.games_lost += 1
-      console.log('game over, playerX won')
       authUi.gamesPlayed += 1
       $('#games').text('') // authUi.gamesPlayed
       $('.wins').text(setup.playerX.games_won)
@@ -159,7 +69,6 @@ let winCheck = function (array, valArray) {
       setup.currentGame.over = true
       // change what's passed to server over to true
       gameStore.game.over = true
-      console.log('game over, playerO won')
       authUi.gamesPlayed += 1
       $('#games').text('') // authUi.gamesPlayed
       $('.wins').text(setup.playerX.games_won)
@@ -181,7 +90,6 @@ let winCheck = function (array, valArray) {
     setup.currentGame.drawer = 'both'
     // change what's passed to server over to true
     gameStore.game.over = true
-    console.log("game over, it's a draw")
     authUi.gamesPlayed += 1
     $('#games').text('') // authUi.gamesPlayed
     $('.wins').text(setup.playerX.games_won)
@@ -190,43 +98,8 @@ let winCheck = function (array, valArray) {
     // $('.game-update').off('click')
     $('#myModal').modal('show').modal({backdrop: 'static', keyboard: false})
   }
-
-  console.log('winner = ', setup.currentGame.winner)
-  console.log('loser = ', setup.currentGame.loser)
-  console.log('game over = ', setup.currentGame.over)
-  console.log('setup.playerX.games_won = ', setup.playerX.games_won)
-  console.log('setup.playerX.games_lost = ', setup.playerX.games_lost)
-  console.log('setup.playerX.games_drawn = ', setup.playerX.games_drawn)
-  console.log('setup.playerO.games_won = ', setup.playerO.games_won)
-  console.log('setup.playerO.games_lost = ', setup.playerO.games_lost)
-  console.log('setup.playerO.games_drawn = ', setup.playerO.games_drawn)
-
   setup.valx.total = setup.valx.sumCol0 + setup.valx.sumCol1 + setup.valx.sumCol2
-
-  console.log('diag1 ' + setup.valx.sumForwardDiagonal + ' diag2 ' +
-  setup.valx.sumBackwardDiagonal + ' col0 ' +
-  setup.valx.sumCol0 + ' col1 ' +
-  setup.valx.sumCol1 + ' col2 ' +
-  setup.valx.sumCol2 + ' row0 ' +
-  setup.valx.sumRow0 + ' row1 ' +
-  setup.valx.sumRow1 + ' row 2' +
-  setup.valx.sumRow2 + ' and col total = ' +
-  setup.valx.total + ' and row total = ' +
-  (setup.valx.sumRow0 + setup.valx.sumRow1 + setup.valx.sumRow2) + ' and total total = '
-  )
-
-  // change the player to whose turn it is next
-//   if (playerTurn === 'playerX') {
-//     playerTurn = 'playerO'
-//   } else {
-//     playerTurn = 'playerX'
-//     return setup.valx.total
-//   }
 }
-// for testing:
-// winCheck(grid, valArray)
-// setup.currentGame // local
-// gameStore.game // send to server
 
 module.exports = {
   winCheck

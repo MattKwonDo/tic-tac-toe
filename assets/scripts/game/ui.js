@@ -9,27 +9,10 @@ const ajaxReturn = require('./ajaxReturn')
 
 let games = ''
 let gamesPlayed = ''
-
-// // reset board function. Resets clicks on board and resets variables.
-// function resetBoard() {
-//     $gameCells.removeClass('won');
-//     $gameCells.html('');
-//     winner = 'null';
-//     moves = ["", "", "", "", "", "", "", "", ""];
-//     turn = 'X';
-//     count = 0;
-// }
-//
-// // Button for new game. Clears board and let's player play new game.
-// $('#newGame').click(function() {
-//     $(this).on();
-//     resetBoard();
-//     startGame();
-//     console.log(moves, turn, count);
-// });
+let errors = 0
+let successes = 0
 
 const createGameSuccess = (ajaxResponseCreate) => {
-  console.log('ajaxResponseCreate game: ', ajaxResponseCreate)
   // reset local store of data
   setup.play = 0
   setup.grid = [new Array(3), new Array(3), new Array(3)]
@@ -85,68 +68,53 @@ const createGameSuccess = (ajaxResponseCreate) => {
     }
   }
   gameStore.game = ajaxResponseCreate.game
-  console.log('gameStore game ', gameStore.game)
-  console.log('gameStore cells ', gameStore.game.cells)
-  console.log('gameStore id ', gameStore.game.id)
-  console.log('gameStore over ', gameStore.game.over)
-  console.log('gameStore player_o ', gameStore.game.player_o)
-  console.log('gameStore player_x ', gameStore.game.player_x)
-  // console.log('gameStore plays', gameStore.game.play)
-  console.log('setup plays', setup.play)
 }
-const createGameFailure = (error) => {
+const createGameFailure = () => {
   $('#myModal').modal('show')
-  // delete this console.log or make it return?
-  console.error('sign in error is: ', error)
+  errors += 1
 }
 
 const playSuccess = (ajaxResponsePlay) => {
-  // const engine = require('./engine.js')
-  console.log('ajaxResponsePlay: ', ajaxResponsePlay)
+  successes += 1
 }
 
-const playFailure = (error) => {
-  console.error(error)
+const playFailure = () => {
+  errors += 1
 }
 
 const showGameSuccess = (ajaxResponseShow) => {
-  console.log('ajaxResponseShow: ', ajaxResponseShow)
+  successes += 1
 }
 
-const showGameFailure = (error) => {
-  console.error(error)
+const showGameFailure = () => {
+  errors += 1
 }
 
 const showAllGameSuccess = (ajaxResponseShowAll) => {
-  console.log('3 ran!, now to pull winners')
-  console.log('ajaxResponseShowAll: ', ajaxResponseShowAll.games)
   gameHistory.games = ajaxResponseShowAll.games
   gamesPlayed = gameHistory.games.length - 1
-  console.log('total games played: ', gamesPlayed)
   $('#games').text(gamesPlayed)
   // run function
-  console.log('games: ', games)
   games = gameHistory.games.map(function (ajaxResponseShowAll) { return ajaxResponseShowAll.cells })
-  console.log('games: ', games)
-  ajaxReturn.games(ajaxResponseShowAll)
+  // ajaxReturn.games(ajaxResponseShowAll)
   // console.log('ajaxReturn.games: ', ajaxReturn.games)
   // .then(ajaxReturn.totalWins(ajaxResponseShowAll))
 
   // .catch(console.log('did not get games list'))
 }
 
-const showAllGameFailure = (error) => {
-  console.error(error)
+const showAllGameFailure = () => {
+  errors += 1
 }
 
-const indexGameSuccess = (ajaxResponseIndex) => {
-  console.log('ajaxResponseIndex: ', ajaxResponseIndex)
-  // gameHistory.games = ajaxResponseIndex.games
-}
-
-const indexGameFailure = (error) => {
-  console.error(error)
-}
+// const indexGameSuccess = (ajaxResponseIndex) => {
+//   console.log('ajaxResponseIndex: ', ajaxResponseIndex)
+//   // gameHistory.games = ajaxResponseIndex.games
+// }
+//
+// const indexGameFailure = (error) => {
+//   console.error(error)
+// }
 
 // const sendSuccess = (data) => {
 //   gameStore.game.play++
@@ -158,8 +126,8 @@ const indexGameFailure = (error) => {
 //   console.log(win.winCheck(gameStore.game.cells))
 // }
 
-const sendFailure = (error) => {
-  console.error(error)
+const sendFailure = () => {
+  errors += 1
 }
 
 module.exports = {
@@ -173,8 +141,8 @@ module.exports = {
   showGameFailure,
   showAllGameSuccess,
   showAllGameFailure,
-  indexGameSuccess,
-  indexGameFailure,
+  // indexGameSuccess,
+  // indexGameFailure,
   games,
   gamesPlayed
 }
