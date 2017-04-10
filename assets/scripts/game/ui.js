@@ -73,6 +73,8 @@ const createGameSuccess = (ajaxResponseCreate) => {
   console.log('setup plays', setup.play)
 }
 const createGameFailure = (error) => {
+  $('#myModal').modal('show')
+  // delete this console.log or make it return?
   console.error('sign in error is: ', error)
 }
 

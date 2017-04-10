@@ -23,7 +23,7 @@ let arrayValue = null
 // Below is create game and click functionality
 // create game
 const onCreateGame = function (event) {
-  if (refData.refData === 'x') {
+  // if ($('.wins').text('0') === '0') {
   event.preventDefault()
   console.log('1 ran!')
   // reset game board
@@ -41,9 +41,9 @@ const onCreateGame = function (event) {
     .catch(gameUi.createGameFailure)
   console.log('3 ran!')
   // will want to reset board, reset handlers, load handlers
-  } else {
-    return
-  }
+  // } else {
+  //   return
+  // }
 }
 
 // get current game data
@@ -271,6 +271,9 @@ const onClick = function (event) { // may not need 'event'
 
 const addHandlers = () => {
   $('#myModal').modal('show') // .modal({backdrop: 'static', keyboard: false})
+  $('#change-password').hide()
+  $('#game-create').hide()
+  $('#sign-out').hide()
   $('.game-create').on('click', onCreateGame)// .on('click', setup.reset)
   $('.game-update').on('click', onClick)
   // move this into onClick? or onto own button
@@ -285,7 +288,7 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  onCreateGame,
+  onCreateGame, //
   onClick, //
   onGetStats,
   onGetStatsAll,
