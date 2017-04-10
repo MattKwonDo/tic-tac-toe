@@ -43,25 +43,42 @@ const createGameSuccess = (ajaxResponseCreate) => {
     // array with values for game logic
   setup.valArray = new Array(8)
 
-  // setup.currentGame = {
-  //   winner: '',
-  //   loser: '',
-  //   drawer: '',
-  //   // only send below to API
-  //   id: 1,
-  //   cells: [], // should this be a 9 by 2 or 9 by 1 or 9 by 3
-  //   over: false,
-  //   player_x: {
-  //     id: playerX.id,
-  //     email: playerX.email
-  //   },
-  //   player_o: {
-  //     id: playerO.id,
-  //     email: playerO.email
-  //   }
-  // }
-  //
-  // store new game data
+  setup.play = 0
+
+  // define grid to store game state
+  setup.grid = [new Array(3), new Array(3), new Array(3)]
+
+  // values for the game logic
+  setup.valx = {
+    total: 0,
+    sumForwardDiagonal: 0,
+    sumBackwardDiagonal: 0,
+    sumCol0: 0,
+    sumCol1: 0,
+    sumCol2: 0,
+    sumRow0: 0,
+    sumRow1: 0,
+    sumRow2: 0
+  }
+
+  // local store of game data
+  setup.currentGame = {
+    winner: '',
+    loser: '',
+    drawer: '',
+    // only send below to API
+    id: 1,
+    cells: [], // should this be a 9 by 2 or 9 by 1 or 9 by 3
+    over: false,
+    player_x: {
+      id: setup.playerX.id,
+      email: setup.playerX.email
+    },
+    player_o: {
+      id: setup.playerO.id,
+      email: setup.playerO.email
+    }
+  }
   gameStore.game = ajaxResponseCreate.game
   console.log('gameStore game ', gameStore.game)
   console.log('gameStore cells ', gameStore.game.cells)

@@ -49,14 +49,24 @@ img {
 
 .game-update {
   background-color: $box-background-color;
+  font-size: 14px;
   border: #000 solid;
-  height: 100px;
-  width: 100px;
+  height: 68px;
+  width: 68px;
   text-align: center;
-  padding: auto;
+  padding: 0px;
   margin: 0 auto;
 }
 
+// .container {
+//   background-color: $box-background-color;
+//   border: #000 solid;
+//   height: 200px;
+//   width: 200px;
+//   text-align: center;
+//   padding: 0px;
+//   margin: 0 auto;
+// }
 #game-create-new {
   clear: both;
 }
