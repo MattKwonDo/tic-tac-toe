@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>TIC TAC TOE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <!-- <link rel="stylesheet" type="text/css" href="assets/scripts/index.scss"> -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <!-- Button trigger modal -->
+          <button type="button" id="logInButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Menu
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Main Menu</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="scoreRow">
+                    <div class="col-xs-4 box score-title" >current wins</div>
+                    <div class="col-xs-4 box score-title" >current draws</div>
+                    <div class="col-xs-4 box score-title" >current losses</div>
+                  </div>
+
+                  <div class="scoreRow">
+                    <div class="col-xs-4 box score-update wins" id="wins0" > </div>
+                    <div class="col-xs-4 box score-update draws" id="draws0" > </div>
+                    <div class="col-xs-4 box score-update losses" id="losses0" > </div>
+                    <div class="col-xs-4 box score-update total-wins" id="total-wins0" > </div>
+                    <div class="col-xs-4 box score-update total-draws" id="total-draws0" > </div>
+                    <div class="col-xs-4 box score-update total-losses" id="total-losses0" > </div>
+                  </div>
+                  <div class="input-group">
+
+                    <form id="sign-up">
+                      <fieldset>
+                        <legend>Sign up!</legend>
+                        <input type="text" name="credentials[email]" id="sign-up-email" placeholder="email please">
+                        <input type="password" name="credentials[password]" id="sign-up-password" placeholder="password please">
+                        <input type="password" name="credentials[password_confirmation]" id="sign-up-password-conf" placeholder="confirm password please">
+                        <input type="submit" name="submit" value="Sign up!">
+                        <div class="errors-sign-up" > </div>
+                      </fieldset>
+                    </form>
+
+                    <form id="sign-in">
+                      <fieldset>
+                        <legend>Sign in!</legend>
+                        <input type="text" name="credentials[email]" id="sign-in-email" placeholder="email please">
+                        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="password please">
+                        <input type="submit" name="submit" value="Sign in!" id='sign-in-box'>
+                        <div class="errors-sign-in" > </div>
+                        <div id="errors-sign-in-image" > </div>
+                      </fieldset>
+                    </form>
+
+                    <form id="sign-out">
+                      <fieldset>
+                        <legend>Sign out!</legend>
+                        <input type="submit" name="submit" value="Sign out!">
+                      </fieldset>
+                    </form>
+
+                    <form id="change-password">
+                      <fieldset>
+                        <legend>Change password!</legend>
+                        <input type="password" name="passwords[old]" id="change-password-old" placeholder="current password please">
+                        <input type="password" name="passwords[new]" id="change-password-new" placeholder="new password please">
+                        <input type="submit" name="submit" value="Change password!">
+                        <div class="errors-change-password" > </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary btn-lg game-create" data-dismiss="modal" id="game-create">Play a new game!!!</button>
+
+                </div>
+              </div>
+            </div>
+          </div> <!-- end modal -->
+
+        </div>
+      </div>
+
+    <div class='board' id='game-board'>
+      <h1>TIC TAC TOE</h1>
+
+      <div class="scoreRowBoard">
+        <div class="col-xs-12 box score-total-title" id="spacer1">total games</div>
+        <div class="col-xs-12 box score-update games" id="games" >0</div>
+      </div>
+
+      <div class="scoreRowBoard">
+        <div class="col-xs-4 box score-title" >current wins</div>
+        <div class="col-xs-4 box score-title" >current draws</div>
+        <div class="col-xs-4 box score-title" >current losses</div>
+      </div>
+
+      <div class="scoreRowBoard">
+        <div class="col-xs-4 box score-update wins" id="wins" >0</div>
+        <div class="col-xs-4 box score-update draws" id="draws" >0</div>
+        <div class="col-xs-4 box score-update losses" id="losses" >0</div>
+      </div>
+
+      <div class="spaceRow">
+        <div class="col-xs-12 box" id="spacer2"></div>
+      </div>
+
+      <div class="container" >
+        <div class="row">
+          <div class="col-xs-4 box game-update" id="1" ><img class="image1" id='img1' title="what's it going to be?" alt="top left square"/></div> <!-- http://www.iconarchive.com/show/super-mario-icons-by-ph03nyx/Retro-Block-Question-2-icon.html -->
+          <div class="col-xs-4 box game-update" id="2" ><img class="image1" title="what's it going to be?" alt="top middle square"/></div>
+          <div class="col-xs-4 box game-update" id="3" ><img class="image1" title="what's it going to be?" alt="top right square"/></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 box game-update" id="4" ><img class="image1" title="what's it going to be?" alt="middle left square"/></div>
+          <div class="col-xs-4 box game-update" id="5" ><img class="image1" title="what's it going to be?" alt="middle middle square"/></div>
+          <div class="col-xs-4 box game-update" id="6" ><img class="image1" title="what's it going to be?" alt="middle right square"/></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 box game-update" id="7" ><img class="image1" title="what's it going to be?" alt="bottom left square"/></div>
+          <div class="col-xs-4 box game-update" id="8" ><img class="image1" title="what's it going to be?" alt="bottom middle square"/></div>
+          <div class="col-xs-4 box game-update" id="9" ><img class="image1" title="what's it going to be?" alt="bottom right square"/></div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>
