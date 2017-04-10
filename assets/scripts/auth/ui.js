@@ -59,7 +59,7 @@ const signOutSuccess = () => {
   $('.game-update').on('click')
   $('.game-update').css('background-color', '#ffd700')
   $('.game-update').html(
-    $('<img />', {src: '../../../../images/questionBlock64.png' //, 'class': 'fullImage'
+    $('<img />', {src: './images/questionBlock64.png' //, 'class': 'fullImage'
     })
   ).show()
   $('#sign-up').show()
