@@ -96,7 +96,7 @@ const showAllGameSuccess = (ajaxResponseShowAll) => {
   $('#games').text(gamesPlayed)
   // run function
   games = gameHistory.games.map(function (ajaxResponseShowAll) { return ajaxResponseShowAll.cells })
-  ajaxReturn.games(ajaxResponseShowAll)
+  // ajaxReturn.games(ajaxResponseShowAll)
   // console.log('ajaxReturn.games: ', ajaxReturn.games)
   // .then(ajaxReturn.totalWins(ajaxResponseShowAll))
 
