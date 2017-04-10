@@ -8,17 +8,13 @@ let refData = ''
 
 const signUpSuccess = (data) => {
   refData = 'x'
-  console.log(data)
   $('.errors-sign-up').text('')
 }
-const signUpFailure = (error) => {
-  console.error(error)
-  // $('#sign-up').append('<p> "that didnt work" </p>')
+const signUpFailure = () => {
   $('.errors-sign-up').text('Uh uh uh, you didnt say the magic word')
 }
 
 const signInSuccess = (data) => {
-  console.log('sign in success: ', data)
   store.user = data.user
   refData = 'x'
   $('.wins').text('0')
@@ -35,21 +31,17 @@ const signInSuccess = (data) => {
   $('.errors-sign-in').text('')
   $('#errors-sign-in-image').hide()
 }
-const signInFailure = (error) => {
-  console.error('sign in error is: ', error)
-  // $('#sign-in').append('<p> "that didnt work" </p>')
+const signInFailure = () => {
   $('.errors-sign-in').text('Uh uh uh, you didnt say the magic word')
-  $('#errors-sign-in-image').html(
-    $('<img />', {src: 'http://i.imgur.com/hLepfiT.gif' //, 'class': 'fullImage'
-    })
-  ).show()
+  // $('#errors-sign-in-image').html(
+  //   $('<img />', {src: 'http://i.imgur.com/hLepfiT.gif' //, 'class': 'fullImage'
+  //   })
+  // ).show()
   $('#sign-in-box').text('god dang')
 }
 
 const signOutSuccess = () => {
-  console.log('sign onSignOut success')
   store.user = null
-  console.log('store is null: ' + store.user)
   refData = ''
   $('.wins').text('0')
   $('.draws').text('0')
@@ -58,10 +50,10 @@ const signOutSuccess = () => {
   $('.game-update').text('')
   $('.game-update').on('click')
   $('.game-update').css('background-color', '#ffd700')
-  $('.game-update').html(
-    $('<img />', {src: 'images/questionBlock64.png' //, 'class': 'fullImage'
-    })
-  ).show()
+  // $('.game-update').html(
+  //   $('<img />', {src: 'images/questionBlock64.png' //, 'class': 'fullImage'
+  //   })
+  // ).show()
   $('#sign-up').show()
   $('#sign-in').show()
   $('#change-password').hide()
@@ -121,19 +113,13 @@ const signOutSuccess = () => {
     }
   }
 }
-const signOutFailure = (error) => {
-  console.error('sign out error is: ', error)
+const signOutFailure = () => {
 }
 
 const changePasswordSuccess = (data) => {
-  console.log('changePasswordSuccess success')
-  console.log(data)
-  // $('#change-password').text('')
   $('.errors-change-password').text('')
 }
-const changePasswordFailure = (error) => {
-  console.error('changePasswordFailure error is: ', error)
-  // $('#change-password').append('<p> "that didnt work" </p>')
+const changePasswordFailure = () => {
   $('.errors-change-password').text('Uh uh uh, you didnt say the magic word')
 }
 

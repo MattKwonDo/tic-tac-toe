@@ -12,7 +12,6 @@ const signUp = (data) => {
 }
 
 const signIn = (data) => {
-  // need to create object that can reference later.. // const data = data
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
@@ -21,11 +20,6 @@ const signIn = (data) => {
 }
 
 const signOut = (data) => {
-  // don't allow them to sign out if haven't signed in
-  // if (Object.keys(user).length === 0) {
-  //   console.log('ah ah ah! ah ah ah!')
-  //   return 'ah ah ah! ah ah ah!'
-  // }
   return $.ajax({
     url: config.apiOrigin + '/sign-out' + '/' + store.user.id,
     method: 'DELETE',
@@ -36,11 +30,6 @@ const signOut = (data) => {
 }
 
 const changePassword = (data) => {
-  // don't allow them to change pw if haven't signed in
-  // if (Object.keys(user).length === 0) {
-  //   console.log('ah ah ah! ah ah ah!')
-  //   return 'ah ah ah! ah ah ah!'
-  // }
   return $.ajax({
     url: config.apiOrigin + '/change-password' + '/' + store.user.id,
     method: 'PATCH',
@@ -51,31 +40,9 @@ const changePassword = (data) => {
   })
 }
 
-// const logMove = (data) => {
-//   return $.ajax({
-//     url: config.apiOrigin + '/games/' + gameStore.game.id,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data
-//   })
-// }
-
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword
 }
-
-// const signUp = (data) =>
-//   new Promise(function (resolve, reject) {
-//     if (Math.random() > 0.5) {
-//       resolve('in signUp')
-//     } else {
-//       const error = new Error('Random')
-//       error.data = data
-//       reject(error)
-//     }
-//   })

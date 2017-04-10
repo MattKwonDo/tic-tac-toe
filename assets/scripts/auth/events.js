@@ -16,7 +16,6 @@ const onSignUp = function (event) {
 }
 // sign in
 const onSignIn = function (event) {
-  // test if working console.log('sign in function worked, bro')
   event.preventDefault()
   const data = getFormFields(this)
   api.signIn(data)
@@ -25,9 +24,7 @@ const onSignIn = function (event) {
 }
 // sign out
 const onSignOut = function (event) {
-  // test if working console.log('sign in function worked, bro')
   event.preventDefault()
-  // console.log('sign out ran ')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
