@@ -9,10 +9,12 @@ let refData = ''
 const signUpSuccess = (data) => {
   refData = 'x'
   console.log(data)
+  $('.errors-sign-up').text('')
 }
 const signUpFailure = (error) => {
   console.error(error)
-  $('#sign-up').append('<p> "that didnt work" </p>')
+  // $('#sign-up').append('<p> "that didnt work" </p>')
+  $('.errors-sign-up').text('Uh uh uh, you didnt say the magic word')
 }
 
 const signInSuccess = (data) => {
@@ -29,11 +31,13 @@ const signInSuccess = (data) => {
   // hide sign-up modal piece until sign-out
   $('#sign-up').hide()
   $('#sign-in').hide()
-  $('sign-in').append('<p> "" </p>')
+  // $('sign-in').append('<p> "" </p>')
+  $('.errors-sign-in').text('')
 }
 const signInFailure = (error) => {
   console.error('sign in error is: ', error)
-  $('#sign-in').append('<p> "that didnt work" </p>')
+  // $('#sign-in').append('<p> "that didnt work" </p>')
+  $('.errors-sign-in').text('Uh uh uh, you didnt say the magic word')
 }
 
 const signOutSuccess = () => {
@@ -119,10 +123,12 @@ const changePasswordSuccess = (data) => {
   console.log('changePasswordSuccess success')
   console.log(data)
   // $('#change-password').text('')
+  $('.errors-change-password').text('')
 }
 const changePasswordFailure = (error) => {
   console.error('changePasswordFailure error is: ', error)
-  $('#change-password').append('<p> "that didnt work" </p>')
+  // $('#change-password').append('<p> "that didnt work" </p>')
+  $('.errors-change-password').text('Uh uh uh, you didnt say the magic word')
 }
 
 module.exports = {
